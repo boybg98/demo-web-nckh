@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Học từ vựng - Theo phương pháp lặp lại ngắt quãng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f4f8;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    p.intro {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 16px;
+      color: #555;
+      text-align: center;
+    }
+
+    .flashcard {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 12px auto;
+      width: 300px;
+    }
+
+    .word {
+      font-size: 22px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .meaning {
+      font-size: 18px;
+      margin: 6px 0;
+      color: #333;
+    }
+
+    .example {
+      font-size: 14px;
+      font-style: italic;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .button-group button {
+      margin: 4px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-remember {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-review {
+      background-color: #ffc107;
+      color: black;
+    }
+    .banquyen {
+      color: black;
+      font-size: 15px;
+    }
+    .btn-remember:disabled{
+      background-color: #666 ;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Học Từ Vựng Tiếng Anh</h1>
+     <p class="intro">
+    Phương pháp <B>lặp lại ngắt quãng</B> giúp bạn ghi nhớ từ vựng lâu hơn bằng cách ôn tập lại từ theo các khoảng thời gian được tính toán hợp lý.
+    Hãy đánh dấu các từ bạn đã nhớ hoặc cần ôn lại để tối ưu hóa việc học!
+  </p>
+
+  <div class="flashcard">
+    <div class="word">Apple</div>
+    <div class="meaning">Quả táo</div>
+    <div class="example">She eats an apple every day.</div>
+    <div class="button-group">
+      <button class="btn-remember" onclick="markRemembered(this)" >Đã nhớ</button>
+      <button class="btn-review">Cần ôn lại</button>
+      <button onclick="speakWord('apple')">🔊</button>
+    </div>
+  </div>
+
+  <div class="flashcard">
+    <div class="word">Book</div>
+    <div class="meaning">Quyển sách</div>
+    <div class="example">He is reading a new book.</div>
+    <div class="button-group">
+      <button class="btn-remember">Đã nhớ</button>
+      <button class="btn-review">Cần ôn lại</button>
+    </div>
+  </div>
+
+  <div class="flashcard">
+    <div class="word">Dog</div>
+    <div class="meaning">Con chó</div>
+    <div class="example">The dog barked loudly.</div>
+    <div class="button-group">
+      <button class="btn-remember">Đã nhớ</button>
+      <button class="btn-review">Cần ôn lại</button>
+    </div>
+  </div>
+
+  <div class="flashcard">
+    <div class="word">Happy</div>
+    <div class="meaning">Vui vẻ, hạnh phúc</div>
+    <div class="example">She felt happy with her results.</div>
+    <div class="button-group">
+      <button class="btn-remember">Đã nhớ</button>
+      <button class="btn-review">Cần ôn lại</button>
+    </div>
+  </div>
+
+  <div class="flashcard">
+    <div class="word">Run</div>
+    <div class="meaning">Chạy</div>
+    <div class="example">They run in the park every morning.</div>
+    <div class="button-group">
+      <button class="btn-remember">Đã nhớ</button>
+      <button class="btn-review">Cần ôn lại</button>
+    </div>
+  </div>
+   <script>
+    function speakWord(text)
+    const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      speechSynthesis.speak(utterance);
+  </script>
+  <div class="banquyen">No CoppyRight</div>
+</body>
+</html>
