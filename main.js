@@ -91,5 +91,13 @@ function showQuizButton(section, percent) {
 }
 
 function startQuiz(section) {
-  alert(`🔍 Bắt đầu bài kiểm tra cho phần: ${section}`);
+  window.location.href = "test1.html";
+}
+  var date = new Date();
+document.getElementById("d").innerHTML = date.toLocaleString();
+function dateTest(){
+  var day = date.getDate();
+  var hour = date.getTime();
+  document.getElementById("d").innerHTML = 'Ngày hôm nay là: ' + day;
+  document.getElementById("d").innerHTML = 'Giờ hiện tại là: ' + hour;
 }
