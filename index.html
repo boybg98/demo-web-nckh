@@ -2,16 +2,17 @@
 <html lang="vi">
 <head>
   <link rel="stylesheet" href="main.css">
+  <script src="main.js" defer></script>
   <meta charset="UTF-8">
   <title>Học từ vựng - Theo phương pháp lặp lại ngắt quãng</title>
 </head>
 <body>
   <div class="nav">
-    <ul class="nav-id1">
+    <ul class="nav-id">
       <li class="nav-id2">Home</li>
       <li class="nav-id2">Our Courses</li>
     </ul>
-    <ul class="nav-id1">
+    <ul class="nav-id">
       <li class="nav-id2">Đăng Nhập</li>
       <li class="nav-id2">Đăng Kí</li>
     </ul>
@@ -21,57 +22,389 @@
     Phương pháp <B>lặp lại ngắt quãng</B> giúp bạn ghi nhớ từ vựng lâu hơn bằng cách ôn tập lại từ theo các khoảng thời gian được tính toán hợp lý.
     Hãy đánh dấu các từ bạn đã nhớ hoặc cần ôn lại để tối ưu hóa việc học!
   </p>
-
-  <div class="flashcard">
-    <div class="word">Apple</div>
-    <div class="meaning">Quả táo</div>
-    <div class="example">She eats an apple every day.</div>
-    <div class="button-group">
-      <button class="btn-remember">Đã nhớ</button>
-      <button class="btn-review">Cần ôn lại</button>
-      <button onclick="speakWord('apple')">🔊</button>
-    </div>
+  <div class="bar">
+    <ul>
+        <li class="bar-id"><a href="#body">Body</a></li>
+        <li class="bar-id"><a href="#professional">Professional</a></li>
+        <li class="bar-id"><a href="#learning">Learning</a></li>
+        <li class="bar-id"><a href="#sport">Sport</a></li>
+        <li class="bar-id"><a href="#computer">Computer</a></li>
+      </ul>
   </div>
-
-  <div class="flashcard">
-    <div class="word">Book</div>
-    <div class="meaning">Quyển sách</div>
-    <div class="example">He is reading a new book.</div>
-    <div class="button-group">
-      <button class="btn-remember">Đã nhớ</button>
-      <button class="btn-review">Cần ôn lại</button>
-    </div>
-  </div>
-
-  <div class="flashcard">
-    <div class="word">Dog</div>
-    <div class="meaning">Con chó</div>
-    <div class="example">The dog barked loudly.</div>
-    <div class="button-group">
-      <button class="btn-remember">Đã nhớ</button>
-      <button class="btn-review">Cần ôn lại</button>
-    </div>
-  </div>
-
-  <div class="flashcard">
-    <div class="word">Happy</div>
-    <div class="meaning">Vui vẻ, hạnh phúc</div>
-    <div class="example">She felt happy with her results.</div>
-    <div class="button-group">
-      <button class="btn-remember">Đã nhớ</button>
-      <button class="btn-review">Cần ôn lại</button>
-    </div>
-  </div>
-
-  <div class="flashcard">
-    <div class="word">Run</div>
-    <div class="meaning">Chạy</div>
-    <div class="example">They run in the park every morning.</div>
-    <div class="button-group">
-      <button class="btn-remember">Đã nhớ</button>
-      <button class="btn-review">Cần ôn lại</button>
-    </div>
-  </div>
+  <section id="body">
+  <fieldset>
+    <div>Cơ thể người<br>Body</div>
+  </fieldset>
+   <div class="progress" id="progress-body">Tiến độ: 0%</div>
+  <ol>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">head</div>
+          <button onclick="speakWord('head')">🔊</button>
+          <div class="meaning">đầu</div>
+          <div class="example">She has a round head.</div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="body">Đã nhớ</button>
+             <button class="btn-review" data-section="body">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">eye</div>
+          <div class="meaning">mắt</div>
+          <div class="example"><em>He closed his eyes to sleep.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="body">Đã nhớ</button>
+             <button class="btn-review" data-section="body">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">mouth</div>
+          <div class="meaning">miệng</div>
+          <div class="example"><em>Open your mouth, please.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="body">Đã nhớ</button>
+             <button class="btn-review" data-section="body">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">face</div>
+          <div class="meaning">khuôn mặt</div>
+          <div class="example"><em>She has an oval face.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="body">Đã nhớ</button>
+             <button class="btn-review" data-section="body">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">stomach</div>
+          <div class="meaning">bụng</div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="body">Đã nhớ</button>
+             <button class="btn-review" data-section="body">Ôn lại</button>
+          </span>
+          <div class="example"><em>He has a pain in his stomach.</em></div>
+        </div>
+      </div>
+    </li>
+  </ol>
+  
+</section>
+<section id="professional">
+  <fieldset>
+    <div>Nghề nghiệp<br>Professional</div>
+  </fieldset>
+  <div class="progress" id="progress-professional">Tiến độ: 0%</div>
+  <ol>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">teacher</div>
+          <div class="meaning">giáo viên</div>
+          <div class="example"><em>The teacher is explaining the lesson.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="professional">Đã nhớ</button>
+             <button class="btn-review" data-section="professional">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">doctor</div>
+          <div class="meaning">bác sĩ</div>
+          <div class="example"><em>The doctor examined the patient.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="professional">Đã nhớ</button>
+             <button class="btn-review" data-section="professional">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">police</div>
+          <div class="meaning">công an</div>
+          <div class="example"><em>The police officer directed the traffic.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="professional">Đã nhớ</button>
+             <button class="btn-review" data-section="professional">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">worker</div>
+          <div class="meaning">công nhân</div>
+          <div class="example"><em>The worker is building a house.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="professional">Đã nhớ</button>
+             <button class="btn-review" data-section="professional">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">driver</div>
+          <div class="meaning">tài xế</div>
+          <div class="example"><em>The driver stopped the car at the red light.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="professional">Đã nhớ</button>
+             <button class="btn-review" data-section="professional">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+  </ol>
+</section>
+<section id="learning">
+  <fieldset>
+    <div>Học tập<br>Learning</div>
+  </fieldset>
+  <div class="progress" id="progress-learning">Tiến độ: 0%</div>
+  <ol>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">study</div>
+          <div class="meaning">học</div>
+          <div class="example"><em>Students study every year</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="learning">Đã nhớ</button>
+             <button class="btn-review" data-section="learning">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">comment</div>
+          <div class="meaning">bình luận chú thích</div>
+          <div class="example"><em>I don't want any comments on my new haircut, thank you!.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="learning">Đã nhớ</button>
+             <button class="btn-review" data-section="learning">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">train</div>
+          <div class="meaning">đào tạo</div>
+          <div class="example"><em>teacher trains skillfull for pupil in the class every lessons</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="learning">Đã nhớ</button>
+             <button class="btn-review" data-section="learning">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">copy</div>
+          <div class="meaning">ghi chép</div>
+          <div class="example"><em>They copy the questions from teacher.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="learning">Đã nhớ</button>
+             <button class="btn-review" data-section="learning">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">read</div>
+          <div class="meaning">đọc</div>
+          <div class="example"><em>She reads book everyday.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="learning">Đã nhớ</button>
+             <button class="btn-review" data-section="learning">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+  </ol>
+</section>
+<section id="sport">
+  <fieldset>
+    <div>Thể thao<br>Sport</div>
+  </fieldset>
+   <div class="progress" id="progress-sport">Tiến độ: 0%</div>
+   <ol>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">athletics</div>
+          <div class="meaning">điền kinh</div>
+          <div class="example"><em>Athletics is a very popular sport at our school.
+</em></div>
+<span class="button-group">
+             <button class="btn-remember" data-section="sport">Đã nhớ</button>
+             <button class="btn-review" data-section="sport">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">championship</div>
+          <div class="meaning">giải quán quân</div>
+          <div class="example"><em>The team is training hard for the national championship.
+</em></div>
+        <span class="button-group">
+             <button class="btn-remember" data-section="sport">Đã nhớ</button>
+             <button class="btn-review" data-section="sport">Ôn lại</button>
+          </span>
+</div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">semi-final</div>
+          <div class="meaning">vòng bán kết</div>
+          <div class="example"><em>She made it to the semi-final but didn't advance to the championship.
+</em></div>
+<span class="button-group">
+             <button class="btn-remember" data-section="sport">Đã nhớ</button>
+             <button class="btn-review" data-section="sport">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">gold-medal</div>
+          <div class="meaning">Huy chương vàng</div>
+          <div class="example"><em>He hopes to win a gold medal at the Olympic Games.
+</em></div>
+        <span class="button-group">
+             <button class="btn-remember" data-section="sport">Đã nhớ</button>
+             <button class="btn-review" data-section="sport">Ôn lại</button>
+          </span>
+</div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">contest</div>
+          <div class="meaning">cuộc thi đấu</div>
+          <div class="example"><em>There will be a singing contest next week.
+.</em></div>
+        <span class="button-group">
+             <button class="btn-remember" data-section="sport">Đã nhớ</button>
+             <button class="btn-review" data-section="sport">Ôn lại</button>
+          </span>
+</div>
+      </div>
+    </li>
+  </ol>
+</section>
+<section id="computer">
+  <fieldset>
+    <div>Máy tính<br>Computer</div>
+  </fieldset>
+   <div class="progress" id="progress-computer">Tiến độ: 0%</div>
+  <ol>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">keyboard</div>
+          <div class="meaning">bàn phím</div>
+          <div class="example"><em>This keyboard is black.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="computer">Đã nhớ</button>
+             <button class="btn-review" data-section="computer">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">compiler</div>
+          <div class="meaning">bộ biên dịch</div>
+          <div class="example"><em>The compiler translates the human-readable source code into machine code that the computer can understand..</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="computer">Đã nhớ</button>
+             <button class="btn-review" data-section="computer">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">decoder</div>
+          <div class="meaning">bộ giải mã</div>
+          <div class="example"><em>In cryptography, a decoder is essential for deciphering encrypted messages.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="computer">Đã nhớ</button>
+             <button class="btn-review" data-section="computer">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">flowchart</div>
+          <div class="meaning">lưu đồ</div>
+          <div class="example"><em>A clear flowchart can help identify potential bottlenecks in a process.
+.</em></div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="computer">Đã nhớ</button>
+             <button class="btn-review" data-section="computer">Ôn lại</button>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="flashcard-container">
+        <div class="flashcard">
+          <div class="word">data</div>
+          <div class="meaning">dữ liệu</div>
+          <div class="example">Before making a decision, it's important to look at the available data.
+</div>
+          <span class="button-group">
+             <button class="btn-remember" data-section="computer">Đã nhớ</button>
+             <button class="btn-review" data-section="computer">Ôn lại</button>
+          </span>
+          <div class="example"><em>He has a pain in his stomach.</em></div>
+        </div>
+      </div>
+    </li>
+  </ol>
   <div class="banquyen">No CoppyRight</div>
 </body>
 </html>

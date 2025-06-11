@@ -1,16 +1,18 @@
 
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
+      padding: 0;
       background-color: #f0f4f8;
+      margin: 0;
     }
 
     h1 {
       text-align: center;
       color: #333;
+      margin-top: 80px;
     }
 
-    p.intro {
+    .intro {
       max-width: 600px;
       margin: 0 auto 30px;
       font-size: 16px;
@@ -25,6 +27,12 @@
       padding: 16px;
       margin: 12px auto;
       width: 300px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+    .flashcard:hover {
+      transform: scale(1.03);
+      background-color: #e6f7ff;
     }
 
     .word {
@@ -64,6 +72,10 @@
       background-color: #ffc107;
       color: black;
     }
+    .word-container {
+      display: flex;
+      align-items: center; /* Căn giữa theo chiều dọc */
+    }
     .banquyen {
       color: black;
       font-size: 15px;
@@ -79,6 +91,11 @@
         top: 0;
         display: flex;
         justify-content: space-between;
+        padding-left: 0;
+    } 
+    .nav-id{
+      padding-inline-start: 10px;
+      margin-right: 10px;
     }
     .nav-id1{
         padding-left: 0;
@@ -87,10 +104,31 @@
     }
     .nav-id2{
         color: black;
-        margin:  30px;
+        margin: 0 8px 8px;
         display: inline-block;
-
     }
-    h1 {
-        margin-top: 60px
-        }
+    .bar{
+      background-image: linear-gradient(0, #71cf6a, rgb(154, 221, 216));
+      list-style: none;
+      justify-content: center;
+    }
+    .bar-id{
+      display: inline-block;
+      text-decoration: none;
+    }
+    .bar ul{
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      padding: 0;
+    }
+    .quiz-button:disabled {
+      background-color: rgba(245, 235, 111, 2);
+      cursor: not-allowed;
+    }
+    .progress{
+      margin-top: 10px;
+      margin-left: 10px;
+      display: flex;
+    }
+
