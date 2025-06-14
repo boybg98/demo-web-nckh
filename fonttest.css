@@ -1,4 +1,4 @@
-/* Reset cơ bản */
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
@@ -6,13 +6,11 @@ body {
   margin: 20px;
 }
 
-/* Tiêu đề chính */
 h1 {
   text-align: center;
   color: #444;
 }
 
-/* Fieldset cho từng nhóm câu hỏi */
 fieldset {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -22,35 +20,24 @@ fieldset {
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
-
-/* Tiêu đề nhóm */
 legend {
   font-size: 1.2em;
   font-weight: bold;
 }
-
-/* Câu hỏi */
 ol {
   padding-left: 20px;
 }
-
 li {
   margin-bottom: 20px;
 }
-
-/* Câu trả lời */
 label {
   display: block;
   margin: 5px 0;
   cursor: pointer;
 }
-
-/* Radio buttons */
 input[type="radio"] {
   margin-right: 10px;
 }
-
-/* Nút gửi */
 button {
   background-color: #4CAF50;
   color: white;
@@ -60,7 +47,6 @@ button {
   cursor: pointer;
   font-size: 16px;
 }
-
 button:hover {
   background-color: #45a049;
 }
