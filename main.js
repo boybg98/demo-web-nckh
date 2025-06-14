@@ -58,12 +58,18 @@ function updateProgress(section) {
   }
   }
 }
-
 function speakWord(word) {
   const utterance = new SpeechSynthesisUtterance(word);
   utterance.lang = 'en-US';
   speechSynthesis.speak(utterance);
 }
+const quizLink ={
+  body: "test1.html",
+  professional: "test2.html",
+  learning: "test3.html",
+  sport: "test4.html",
+  computer: "test5.html"
+};
 function showQuizButton(section, percent) {
   let quizButton = document.getElementById(`quiz-btn-${section}`);
 
@@ -90,10 +96,12 @@ function showQuizButton(section, percent) {
 }
 
 function startQuiz(section) {
+  const link = quizLink[section] || "test1.html";
   localStorage.setItem('coutdown', 300);
   localStorage.setItem('quizSection', section);
-  window.location.href = "test1.html";
+  window.location.href = link;
 }
+
 function updateClock() {
   const now = new Date();
   const dateString = now.toLocaleString();
@@ -134,4 +142,31 @@ function start() {
         start();
     }, 1000);
 }
-window.onload = start;
+function noticeNewday() {
+  const today = new Date().toDateString();
+  const lastVisit = localStorage.getItem('lastVisitDate');
+  const lastSection = localStorage.getItem('quizSection');
+
+  if (lastVisit !== today) {
+    localStorage.setItem('lastVisitDate', today);
+
+    if (lastSection) {
+      const answer = confirm(" Chào bạn! Bạn có muốn học lại hoặc kiểm tra lại phần trước không?");
+      if (answer) {
+        const action = confirm(" Nhấn OK để học lại, hoặc Cancel để làm lại bài kiểm tra.");
+
+        if (action) {
+          window.location.href = "index.html";
+        } else {
+          startQuiz(lastSection);
+        }
+      }
+    } else {
+      alert("Chào mừng ngày mới! Hãy bắt đầu học tập nhé.");
+    }
+  }
+}
+window.onload = function(){
+  noticeNewday();
+  start();
+};
