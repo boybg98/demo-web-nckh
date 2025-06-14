@@ -4,17 +4,28 @@
        <title>Check body</title>
        <meta name="viewport" content="width=device-width, initial-scale=1.0">"
        <meta charset="UTF-8">
-       <link rel ="stylesheet" href="fonttest.css">
+       <link rel ="stylesheet" href="main.css">
+       <script src="main.js" defer></script>
     </head>
     <body>
         <h1>Check test body</h1>
+<input type="hidden" id="h_val" value="0">
+<input type="hidden" id="m_val" value="3">
+<input type="hidden" id="s_val" value="0">
+<div>
+  Thời gian còn lại: 
+  <span id="h">0</span>:
+  <span id="m">03</span>:
+  <span id="s">00</span>
+</div>
+
 <form method="post">
     <fieldset>
         <legend>Experience</legend>
         <h2>Choose the correct option</h2>
         <ol>
             <li>
-             <p class="questions"> head có nghĩa là ?</p>
+                head có nghĩa là ?<br>
                 <label><input name="answer1" type="radio" value="A"> mắt</label>
                 <label><input name="answer1" type="radio" value="B"> đầu</label>
                 <label><input name="answer1" type="radio" value="C"> tai</label>
@@ -22,7 +33,7 @@
             </li>
             <br>
             <li>
-                <p class="questions">eye có nghĩa là gì ?</p>
+                eye có nghĩa là gì ?<br>
                 <label><input name="answer2" type="radio" value="A"> mắt</label>
                 <label><input name="answer2" type="radio" value="B"> đầu</label>
                 <label><input name="answer2" type="radio" value="C"> tai</label>
@@ -30,7 +41,7 @@
             </li>
             <br>
             <li>
-             <p class="questions">mouth có nghĩa là gì ?</p>
+                mouth có nghĩa là gì ?<br>
                 <label><input name="answer3" type="radio" value="A"> mắt</label>
                 <label><input name="answer3" type="radio" value="B"> miệng</label>
                 <label><input name="answer3" type="radio" value="C"> đầu</label>
@@ -38,7 +49,7 @@
             </li>
             <br>
             <li>
-                <p class="questions">face có nghĩa là gì ?</p>
+                face có nghĩa là gì ?<br>
                 <label><input name="answer4" type="radio" value="A"> đầu</label>
                 <label><input name="answer4" type="radio" value="B"> khuôn mặt</label>
                 <label><input name="answer4" type="radio" value="C"> tai</label>
@@ -46,7 +57,7 @@
             </li>
             <br>
             <li>
-            <p class="questions">stomach có nghĩa là gì ?</p>
+                stomach có nghĩa là gì ?<br>
                 <label><input name="answer5" type="radio" value="A"> bụng</label>
                 <label><input name="answer5" type="radio" value="B"> đầu</label>
                 <label><input name="answer5" type="radio" value="C"> lưng</label>
