@@ -1,4 +1,6 @@
-
+html{
+    scroll-behavior: smooth;
+}
     body {
       font-family: Arial, sans-serif;
       padding: 0;
@@ -74,7 +76,7 @@
     }
     .word-container {
       display: flex;
-      align-items: center; /* Căn giữa theo chiều dọc */
+      align-items: center;
     }
     .banquyen {
       color: black;
