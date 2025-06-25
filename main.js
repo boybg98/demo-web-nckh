@@ -170,3 +170,27 @@ window.onload = function(){
   noticeNewday();
   start();
 };
+function toggleForms() {
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const formTitle = document.getElementById('form-title');
+  const toggleLink = document.querySelector('.toggle-link');
+
+  if (loginForm.style.display !== 'none') {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'flex';
+    formTitle.textContent = 'Đăng ký';
+    toggleLink.textContent = 'Đã có tài khoản? Đăng nhập';
+  } else {
+    loginForm.style.display = 'flex';
+    registerForm.style.display = 'none';
+    formTitle.textContent = 'Đăng nhập';
+    toggleLink.textContent = 'Chưa có tài khoản? Đăng ký';
+  }
+}
+window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("register") === "true") {
+      toggleForms();
+    }
+  });
