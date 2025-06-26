@@ -17,18 +17,32 @@ html{
     .intro {
       max-width: 600px;
       margin: 0 auto 30px;
-      font-size: 16px;
+      font-size: 18px;
       color: #555;
       text-align: center;
     }
-
+    #body div{
+      font-size:18px;
+    }
+    #professional div{
+      font-size:18px;
+    }
+    #learning div{
+      font-size:18px;
+    }
+    #sport div{
+      font-size:18px;
+    }
+    #computer div{
+      font-size:18px;
+    }
     .flashcard {
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 10px;
       padding: 16px;
-      margin: 12px auto;
-      width: 300px;
+      width:100%;
+      
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease;
     }
@@ -37,8 +51,8 @@ html{
       background-color: #e6f7ff;
     }
 
-    .word {
-      font-size: 22px;
+     .word {
+      font-size: 20px !important;
       font-weight: bold;
       color: #007bff;
     }
@@ -50,7 +64,7 @@ html{
     }
 
     .example {
-      font-size: 14px;
+      font-size: 18px;
       font-style: italic;
       color: #666;
       margin-bottom: 10px;
@@ -91,14 +105,19 @@ html{
         background-color: #76ddd8;
         position: fixed;
         top: 0;
+        font-size:20px;
         display: flex;
         justify-content: space-between;
         padding-left: 0;
     } 
     .nav-id{
+      text-decoration: none;
       padding-inline-start: 10px;
       margin-right: 10px;
     }
+    
+    
+      
     .nav-id1{
         padding-left: 0;
         color: white;
@@ -108,17 +127,29 @@ html{
         color: black;
         margin: 0 8px 8px;
         display: inline-block;
+        text-decoration: none;
+    }
+    .nav-id2 a{
+      text-decoration: none;
+      color:darkblue;
     }
     .bar{
       background-image: linear-gradient(0, #71cf6a, rgb(154, 221, 216));
       list-style: none;
       justify-content: center;
+     
     }
     .bar-id{
+      font-size:20px;
       display: inline-block;
       text-decoration: none;
     }
+    .bar-id a{
+      text-decoration: none;
+      color:blue;
+    }
     .bar ul{
+      text-decoration: none;
       display: flex;
       justify-content: space-around;
       list-style: none;
