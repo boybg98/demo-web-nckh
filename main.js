@@ -166,10 +166,13 @@ function noticeNewday() {
     }
   }
 }
-window.onload = function(){
-  noticeNewday();
-  start();
-};
+function submitTest() {
+  alert('🎉 Nộp bài thành công! Đang chuyển về trang chủ...');
+  setTimeout(function () {
+    window.location.href = "index.html";
+  }, 1000); 
+}
+
 function toggleForms() {
   const loginForm = document.getElementById('loginForm');
   const registerForm = document.getElementById('registerForm');
@@ -194,3 +197,38 @@ window.addEventListener("DOMContentLoaded", () => {
       toggleForms();
     }
   });
+  if (percent === 100) {
+  const completeKey = `completed-${section}`;
+  const completeTime = new Date().toISOString();
+  localStorage.setItem(completeKey, completeTime);
+}
+function checkReviewOpportunity() {
+  const now = new Date();
+  const sections = Object.keys(sectionProgress);
+  const thresholdDays = 2;
+
+  let sectionsToReview = [];
+
+  sections.forEach(section => {
+    const completeTimeStr = localStorage.getItem(`completed-${section}`);
+    if (completeTimeStr) {
+      const completeTime = new Date(completeTimeStr);
+      const daysPassed = Math.floor((now - completeTime) / (1000 * 60 * 60 * 24));
+      if (daysPassed >= thresholdDays) {
+        sectionsToReview.push(section);
+      }
+    }
+  });
+  if (sectionsToReview.length > 0) {
+    const message = `📅 Đã ${thresholdDays}+ ngày kể từ khi bạn hoàn thành: ${sectionsToReview.join(', ')}.\nBạn muốn ôn tập lại không?`;
+    if (confirm(message)) {
+      const reviewTest =`mixedTest.html?section=${encodeURIComponent(eligibleSections.join(','))}`;
+      window.location.href = reviewTest;
+    }
+  }
+}
+window.onload = function(){
+  noticeNewday();
+  start();
+  checkReviewOpportunity();
+};

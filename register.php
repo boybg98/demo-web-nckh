@@ -1,25 +1,35 @@
 <?php
-include 'db.php';
+require 'db.php';
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
-    $email = mysqli_real_escape_string($conn, $_POST["email"]);
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
 
-    $check = "SELECT * FROM users WHERE username='$username' OR email='$email'";
-    $result = mysqli_query($conn, $check);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
 
-    if (mysqli_num_rows($result) > 0) {
-        echo "Tên đăng nhập hoặc email đã tồn tại.";
-    } else {
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
-        if (mysqli_query($conn, $sql)) {
-            echo "Đăng ký thành công! <a href='indexlog.html'>Đăng nhập ngay</a>";
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        if ($password === $row['password']) {
+            $_SESSION['username'] = $username;
+            header("Location: dashboard.php");
+            exit();
         } else {
-            echo "Lỗi: " . mysqli_error($conn);
+            echo "Sai mật khẩu.";
         }
+    } else {
+        echo "Không tìm thấy tài khoản.";
     }
 
-    mysqli_close($conn);
+    $stmt->close();
 }
 ?>
+<form method="POST">
+    <h2>Đăng nhập</h2>
+    Tên đăng nhập: <input type="text" name="username" required><br>
+    Mật khẩu: <input type="password" name="password" required><br>
+    <button type="submit">Đăng nhập</button>
+</form>

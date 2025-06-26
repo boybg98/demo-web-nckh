@@ -135,7 +135,13 @@ html{
     .bar{
       background-image: linear-gradient(0, #71cf6a, rgb(154, 221, 216));
       list-style: none;
+<<<<<<< HEAD
       justify-content: center;}
+=======
+      justify-content: center;
+      
+    }
+>>>>>>> b1c76fd (update 26/6)
     .bar-id{
       font-size:20px;
       display: inline-block;
