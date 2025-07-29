@@ -231,4 +231,26 @@ window.onload = function(){
   noticeNewday();
   start();
   checkReviewOpportunity();
+  reviewMistakes();
 };
+function selectQuerry(word, section) {
+  let mistakes = JSON.parse(localStorage.getItem('mistakes') || '[]');
+  mistakes.push({ word, section});
+  localStorage.setItem('mistakes', JSON.stringify(mistakes));
+}
+function reviewMistakes() {
+  const mistakes = JSON.parse(localStorage.getItem('mistakes') || '[]');
+  if (mistakes.length > 0) {
+    const firstMistake = mistakes[0];
+    alert(`❗ Bạn đã sai từ: "${firstMistake.word}". Hãy học lại phần "${firstMistake.section}" nhé!`);
+    const allCards = document.querySelectorAll(`.flashcard[data-section="${firstMistake.section}"]`);
+    allCards.forEach(card => {
+      if (card.textContent.includes(firstMistake.word)) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.border = '2px solid red'; 
+      }
+    });
+
+    localStorage.removeItem('mistakes');
+  }
+}
