@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kết quả kiểm tra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+    }
+    .result-box {
+      background-color: #e8f5e9;
+      border: 2px solid #4caf50;
+      padding: 30px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h1>🎉 Kết quả của bạn</h1>
+    <p id="score-text"></p>
+    <p id="level-text"></p>
+    <button onclick="goToNextLevel()">Nâng cấp trình độ</button>
+  </div>
+
+  <script>
+    const levels = [ "Trung bình", "Khá", "Xuất sắc"];
+    let currentLevelIndex = 0;
+
+    function getCurrentLevel() {
+      return levels[currentLevelIndex];
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const score = params.get("score");
+    const level = params.get("level");
+
+    document.getElementById("score-text").textContent = `Bạn đã đạt ${score}/10 điểm.`;
+    document.getElementById("level-text").textContent = `Bạn có muốn nâng cấp lên trình độ: ${level}?`;
+
+    function goToNextLevel() {
+      window.location.href = "http://127.0.0.1:5500/testkha.html";
+    }
+  </script>
+</body>
+</html>

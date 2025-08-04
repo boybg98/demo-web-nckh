@@ -2,7 +2,7 @@ html{
     scroll-behavior: smooth;
 }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segor UI',Arial, sans-serif;
       padding: 0;
       background-color: #f0f4f8;
       margin: 0;
@@ -161,4 +161,5 @@ html{
       margin-left: 10px;
       display: flex;
     }
+    
 

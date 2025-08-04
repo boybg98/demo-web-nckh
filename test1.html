@@ -8,6 +8,7 @@
        <script src="main.js" defer></script>
     </head>
     <body>
+       <div id="upgrade-level" style="margin-top: 20px;"></div>
         <h1>Check test body</h1>
 <input type="hidden" id="h_val" value="0">
 <input type="hidden" id="m_val" value="3">
@@ -69,14 +70,126 @@
         <legend>FILL</legend>
         <h2>Fill in the blank </h2>
         <ol>
-            <li>đầu:<input name ="q1" placeholder="keys" type="text"</li>
-            <li>tai:<input name ="q2" placeholder="keys" type="text"</li>
-            <li>khuôn mặt:<input name ="q3" placeholder="keys" type="text"</li>
-            <li>bụng:<input name ="q4" placeholder="keys" type="text"</li>
-            <li>miệng:<input name ="q5" placeholder="keys" type="text"</li>
+            <li>đầu:<input name ="q1" placeholder="keys" type="text"></li>
+            <li>tai:<input name ="q2" placeholder="keys" type="text"></li>
+            <li>khuôn mặt:<input name ="q3" placeholder="keys" type="text"></li>
+            <li>bụng:<input name ="q4" placeholder="keys" type="text"></li>
+            <li>miệng:<input name ="q5" placeholder="keys" type="text"></li>
         </ol>
     </fieldset>
-</form>
-    <button type="submit" onclick="alert('Nộp bài thành công')" >Nộp bài</button>
-    </body>
+    <button type="submit">Nộp bài</button>
+    
+  </form>
+  <button id="btn-home" style="margin-top: 20px;">🏠 Quay về trang chủ</button>
+
+<div id="test1-result"></div>
+<script>
+const levels = [ "Trung bình", "Khá", "Xuất sắc"];
+let currentLevelIndex = 0;
+
+function getCurrentLevel() {
+  return levels[currentLevelIndex];
+}
+
+
+
+document.querySelector('form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const answers = {
+    answer1: "B",
+    answer2: "A",
+    answer3: "B",
+    answer4: "D",
+    answer5: "A"
+  };
+
+  let score = 0;
+
+  // Trắc nghiệm
+  for (let i = 1; i <= 5; i++) {
+    const inputs = this.querySelectorAll(`input[name="answer${i}"]`);
+    inputs.forEach(input => {
+      const label = input.parentElement;
+      label.style.color = "black";
+      if (input.checked) {
+        if (input.value === answers[`answer${i}`]) {
+          label.style.color = "green";
+          score++;
+        } else {
+          label.style.color = "red";
+        }
+      }
+    });
+  }
+
+  // Điền từ
+  const fillAnswers = {
+    q1: "head",
+    q2: "ear",
+    q3: "face",
+    q4: "stomach",
+    q5: "mouth"
+  };
+
+  Object.keys(fillAnswers).forEach(key => {
+    const input = this[key];
+    input.style.border = "2px solid transparent";
+    if (input.value.trim().toLowerCase() === fillAnswers[key]) {
+      input.style.border = "2px solid green";
+      score++;
+    } else {
+      input.style.border = "2px solid red";
+    }
+  });
+
+  document.getElementById('test1-result').innerHTML = `<strong>Bạn được ${score}/10 điểm.</strong>`;
+
+  if (score >= 9) {
+  const nextLevel = levels[currentLevelIndex + 1];
+  window.location.href = `http://127.0.0.1:5500/checkpoint.html?score=${score}&level=${nextLevel}`;
+} else {
+  alert(`Bạn đã được ${score} điểm. Bạn cần ít nhất 9 điểm để nâng cấp cấp độ.`);
+}
+});
+let isSubmitted = false;
+
+document.querySelector('form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  isSubmitted = true; // Đánh dấu đã nộp bài
+  // ... phần chấm điểm giữ nguyên ...
+});
+
+document.getElementById("btn-home").addEventListener("click", function() {
+  if (!isSubmitted) {
+    const confirmLeave = confirm("Bạn chưa hoàn thành bài kiểm tra. Bạn vẫn muốn rời khỏi trang web này?");
+    if (!confirmLeave) return;
+  }
+  window.location.href = "http://127.0.0.1:5500/index.html"; // Đổi thành đường dẫn trang chủ của bạn
+});
+
+
+</script>
+</body>
 </html>
+<style>
+  input[type="text"] {
+  transition: border 0.3s ease;
+}
+label {
+  transition: color 0.3s ease;
+}
+#btn-home {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#btn-home:hover {
+  background-color: #1976d2;
+}
+
+</style>
