@@ -9,18 +9,26 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px;
-      background-color: #f9f9f9;
+      background-color: #f0f8ff;
     }
     .result-box {
-      background-color: #e8f5e9;
+      background-color: #fff;
       border: 2px solid #4caf50;
       padding: 30px;
       border-radius: 10px;
       display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    p {
+      font-size: 18px;
+      margin: 10px 0;
     }
     button {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 10px 25px;
       font-size: 16px;
       background-color: #4caf50;
       color: white;
@@ -38,27 +46,38 @@
     <h1>🎉 Kết quả của bạn</h1>
     <p id="score-text"></p>
     <p id="level-text"></p>
-    <button onclick="goToNextLevel()">Nâng cấp trình độ</button>
+    <p id="upgrade-prompt"></p>
+    <button id="upgrade-btn" style="display: none;">Nâng cấp trình độ</button>
   </div>
 
-  <script>
-    const levels = [ "Trung bình", "Khá", "Xuất sắc"];
-    let currentLevelIndex = 0;
+ <script>
+  const params = new URLSearchParams(window.location.search);
+  const score = params.get("score");
+  const level = decodeURIComponent(params.get("level"));
 
-    function getCurrentLevel() {
-      return levels[currentLevelIndex];
-    }
+  document.getElementById("score-text").textContent = `Bạn đã đạt ${score}/10 điểm.`;
+  document.getElementById("level-text").textContent = `Trình độ hiện tại của bạn: ${level}`;
 
-    const params = new URLSearchParams(window.location.search);
-    const score = params.get("score");
-    const level = params.get("level");
+  const upgradePrompt = document.getElementById("upgrade-prompt");
+  const upgradeBtn = document.getElementById("upgrade-btn");
 
-    document.getElementById("score-text").textContent = `Bạn đã đạt ${score}/10 điểm.`;
-    document.getElementById("level-text").textContent = `Bạn có muốn nâng cấp lên trình độ: ${level}?`;
+  if (level === "Trung bình") {
+  upgradePrompt.textContent = "🎯 Bạn có thể nâng cấp lên cấp độ Khá.";
+  upgradeBtn.style.display = "inline-block";
+  upgradeBtn.onclick = () => window.location.href = "testkha.html";
+} else if (level === "Khá") {
+  upgradePrompt.textContent = "🎯 Bạn có muốn nâng lên cấp độ Giỏi không?";
+  upgradeBtn.style.display = "inline-block";
+  upgradeBtn.onclick = () => window.location.href = "testgioi.html"; // sau này bạn tạo trang này
+} else if (level === "Giỏi") {
+  upgradePrompt.textContent = "🎓 Bạn đã đạt cấp độ cao nhất!";
+  upgradeBtn.style.display = "none";
+}
+  else {
+    upgradePrompt.textContent = "⚠️ Không xác định được cấp độ.";
+    upgradeBtn.style.display = "none";
+  }
+</script>
 
-    function goToNextLevel() {
-      window.location.href = "http://127.0.0.1:5500/testkha.html";
-    }
-  </script>
 </body>
 </html>

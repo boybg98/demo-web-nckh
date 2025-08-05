@@ -77,7 +77,7 @@
             <li>miệng:<input name ="q5" placeholder="keys" type="text"></li>
         </ol>
     </fieldset>
-<<<<<<< HEAD
+
     <button type="submit">Nộp bài</button>
     
   </form>
@@ -85,15 +85,6 @@
 
 <div id="test1-result"></div>
 <script>
-const levels = [ "Trung bình", "Khá", "Xuất sắc"];
-let currentLevelIndex = 0;
-
-function getCurrentLevel() {
-  return levels[currentLevelIndex];
-}
-
-
-
 document.querySelector('form')?.addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -103,6 +94,14 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
     answer3: "B",
     answer4: "D",
     answer5: "A"
+  };
+
+  const fillAnswers = {
+    q1: "head",
+    q2: "ear",
+    q3: "face",
+    q4: "stomach",
+    q5: "mouth"
   };
 
   let score = 0;
@@ -125,14 +124,6 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
   }
 
   // Điền từ
-  const fillAnswers = {
-    q1: "head",
-    q2: "ear",
-    q3: "face",
-    q4: "stomach",
-    q5: "mouth"
-  };
-
   Object.keys(fillAnswers).forEach(key => {
     const input = this[key];
     input.style.border = "2px solid transparent";
@@ -147,30 +138,26 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
   document.getElementById('test1-result').innerHTML = `<strong>Bạn được ${score}/10 điểm.</strong>`;
 
   if (score >= 9) {
-  const nextLevel = levels[currentLevelIndex + 1];
-  window.location.href = `http://127.0.0.1:5500/checkpoint.html?score=${score}&level=${nextLevel}`;
-} else {
-  alert(`Bạn đã được ${score} điểm. Bạn cần ít nhất 9 điểm để nâng cấp cấp độ.`);
-}
-});
-let isSubmitted = false;
+   window.location.href = `checkpoint.html?score=${score}&level=Trung bình`;
 
-document.querySelector('form')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  isSubmitted = true; // Đánh dấu đã nộp bài
-  // ... phần chấm điểm giữ nguyên ...
+  } else {
+    alert(`Bạn đã được ${score} điểm. Bạn cần ít nhất 9 điểm để nâng cấp cấp độ.`);
+  }
+
+  isSubmitted = true;
 });
+
+let isSubmitted = false;
 
 document.getElementById("btn-home").addEventListener("click", function() {
   if (!isSubmitted) {
     const confirmLeave = confirm("Bạn chưa hoàn thành bài kiểm tra. Bạn vẫn muốn rời khỏi trang web này?");
     if (!confirmLeave) return;
   }
-  window.location.href = "http://127.0.0.1:5500/index.html"; // Đổi thành đường dẫn trang chủ của bạn
+  window.location.href = "index.html";
 });
-
-
 </script>
+
 </body>
 </html>
 <style>
@@ -194,9 +181,8 @@ label {
 }
 
 </style>
-=======
-</form>
-    <button type="button" onclick="submitTest()">Nộp bài</button>
+
+
     </body>
 </html>
->>>>>>> 689541f1047479ff0c145d9645b5aa579b2b13ff
+

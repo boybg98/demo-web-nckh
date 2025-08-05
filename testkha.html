@@ -114,28 +114,20 @@
 <button id="btn-home" style="margin-top: 20px;">🏠 Quay về trang chủ</button>
 <div id="test1-result"></div>
 <script>
-const levels = [ "Trung bình", "Khá", "Xuất sắc"];
-let currentLevelIndex = 0;
-
-function getCurrentLevel() {
-  return levels[currentLevelIndex];
-}
-
-
 document.querySelector('form')?.addEventListener('submit', function(e) {
   e.preventDefault();
 
   const answers = {
-    answer1: "D", // Head
-    answer2: "A", // Driver
-    answer3: "A", // Read
-    answer4: "A", // Semi-final
-    answer5: "A", // Flowchart
-    answer6: "C", // Athletics
-    answer7: "A", // Keyboard
-    answer8: "A", // Training
-    answer9: "A", // Police
-    answer10: "A" // Stomach
+    answer1: "D",
+    answer2: "A",
+    answer3: "A",
+    answer4: "A",
+    answer5: "A",
+    answer6: "C",
+    answer7: "A",
+    answer8: "A",
+    answer9: "A",
+    answer10: "A"
   };
 
   let score = 0;
@@ -159,30 +151,26 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
   document.getElementById('test1-result').innerHTML = `<strong>Bạn được ${score}/10 điểm.</strong>`;
 
   if (score >= 9) {
-  const nextLevel = levels[currentLevelIndex + 1];
-  window.location.href = `http://127.0.0.1:5500/checkpoint.html?score=${score}&level=${nextLevel}`;
-} else {
-  alert(`Bạn đã được ${score} điểm. Bạn cần ít nhất 9 điểm để nâng cấp cấp độ.`);
-}
-});
-let isSubmitted = false;
+   window.location.href = `checkpoint.html?score=${score}&level=Khá`;
+;
+  } else {
+    alert(`Bạn đã được ${score} điểm. Bạn cần ít nhất 9 điểm để nâng cấp cấp độ.`);
+  }
 
-document.querySelector('form')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  isSubmitted = true; // Đánh dấu đã nộp bài
-  // ... phần chấm điểm giữ nguyên ...
+  isSubmitted = true;
 });
+
+let isSubmitted = false;
 
 document.getElementById("btn-home").addEventListener("click", function() {
   if (!isSubmitted) {
     const confirmLeave = confirm("Bạn chưa hoàn thành bài kiểm tra. Bạn vẫn muốn rời khỏi trang web này?");
     if (!confirmLeave) return;
   }
-  window.location.href = "http://127.0.0.1:5500/index.html"; // Đổi thành đường dẫn trang chủ của bạn
+  window.location.href = "index.html";
 });
-
-
 </script>
+
 </body>
 </html>
 <style>
