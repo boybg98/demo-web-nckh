@@ -170,7 +170,7 @@ function noticeNewday() {
         const action = confirm(" Nhấn OK để học lại, hoặc Cancel để làm lại bài kiểm tra.");
 
         if (action) {
-          window.location.href = "index.html";
+          window.location.href = "index.php";
         } else {
           startQuiz(lastSection);
         }
@@ -183,7 +183,7 @@ function noticeNewday() {
 function submitTest() {
   alert('🎉 Nộp bài thành công! Đang chuyển về trang chủ...');
   setTimeout(function () {
-    window.location.href = "index.html";
+    window.location.href = "index.php";
   }, 1000); 
 }
 
@@ -193,7 +193,9 @@ function toggleForms() {
   const formTitle = document.getElementById('form-title');
   const toggleLink = document.querySelector('.toggle-link');
 
-  if (loginForm.style.display !== 'none') {
+  const isLoginVisible = getComputedStyle(loginForm).display !== 'none';
+
+  if (isLoginVisible) {
     loginForm.style.display = 'none';
     registerForm.style.display = 'flex';
     formTitle.textContent = 'Đăng ký';
@@ -205,12 +207,13 @@ function toggleForms() {
     toggleLink.textContent = 'Chưa có tài khoản? Đăng ký';
   }
 }
+
 window.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("register") === "true") {
-      toggleForms();
-    }
-  });
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("register") === "true") {
+    toggleForms();
+  }
+});
   if (percent === 100) {
   const completeKey = `completed-${section}`;
   const completeTime = new Date().toISOString();
@@ -374,7 +377,7 @@ function submitTest() {
 
   const homeButton = document.createElement("button");
   homeButton.textContent = "🏠 Về trang chủ";
-  homeButton.onclick = () => window.location.href = "index.html";
+  homeButton.onclick = () => window.location.href = "index.php";
 
   retryButton.style.marginRight = "10px";
 

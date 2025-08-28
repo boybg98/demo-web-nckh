@@ -5,7 +5,7 @@ session_start();
 // Kiểm tra nếu người dùng chưa đăng nhập (không có 'username' trong session)
 if (!isset($_SESSION['username'])) {
     // Nếu chưa đăng nhập, chuyển hướng về trang login.php
-    header("Location: login.php");
+    header("Location: register.php");
     exit; //thoát 
 }
 ?>
