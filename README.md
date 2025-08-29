@@ -1,6 +1,10 @@
-thêm khoảng trắng bố cục cho bài kiểm tra,
-chỉnh sửa cỡ chữ bố cục lại phần nav(tăng cỡ chữ)..
-chỉnh lại căn đều ở mỗi flashcard...
-khi học đến bài thứ 3 thì quay lại nhắc kiến thức bài 1 2 khi sai từ quay lại bài đó để học từ đó.....
-Hoặc nếu bài 1 bài 2 học xong thì hôm sau nhắc họ làm bài kiểm tra bài 1 trộn lẫn bài 2...
-dowload 2 công cụ PHP và XAMPP,,,,
+1.Quản lý tài khoản người dùng(phân quyền)-done
+2.Quản lý nội dung từ vựng :
+-Thêm/sửa/xóa từ
+-Hiện từ mới cho từng bài, từng level
+-Thêm nghĩa, ví dụ
+3.Theo dõi hoạt động:
+-Thống kê số người dùng học trong ngày
+4.ngôn ngữ-công cụ 
+html-js- firebase
+-Tìm hiểu về firebase

@@ -6,7 +6,7 @@ session_start();
 session_destroy();
 
 // Chuyển hướng người dùng về trang đăng nhập
-header("Location: login.php");
+header("Location: index.php");
 
 // Dừng chương trình tại đây để tránh thực thi tiếp
 exit;
