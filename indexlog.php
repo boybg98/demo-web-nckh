@@ -85,7 +85,7 @@
 </head>
 <body>
 
-<!-- Thanh menu -->
+
 <div class="nav">
   <ul class="nav-id">
     <li class="nav-id2">Trang chủ</li>
@@ -94,7 +94,7 @@
   <?php include 'nav.php'; ?>
 </div>
 
-<!-- Phần form -->
+
 <div class="container">
 <?php
   $showRegister = isset($_GET['register']) && $_GET['register'] === 'true';
@@ -118,6 +118,5 @@
   }
 ?>
 </div>
-
 </body>
 </html>
