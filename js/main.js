@@ -170,7 +170,7 @@ function noticeNewday() {
         const action = confirm(" Nhấn OK để học lại, hoặc Cancel để làm lại bài kiểm tra.");
 
         if (action) {
-          window.location.href = "index.php";
+          window.location.href = "index.html";
         } else {
           startQuiz(lastSection);
         }
@@ -183,7 +183,7 @@ function noticeNewday() {
 function submitTest() {
   alert('🎉 Nộp bài thành công! Đang chuyển về trang chủ...');
   setTimeout(function () {
-    window.location.href = "index.php";
+    window.location.href = "index.html";
   }, 1000); 
 }
 
@@ -377,7 +377,7 @@ function submitTest() {
 
   const homeButton = document.createElement("button");
   homeButton.textContent = "🏠 Về trang chủ";
-  homeButton.onclick = () => window.location.href = "index.php";
+  homeButton.onclick = () => window.location.href = "index.html";
 
   retryButton.style.marginRight = "10px";
 

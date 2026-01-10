@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/auth.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Đăng nhập </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="flashcard-container mt-5">
+        <div class="row justify-content-center auth-container">
+            <div class="col-md-6 shadow-md p-4 rounded-md">
+                <a href="index.html" class="logo button-group">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <h5>Đăng nhập</h5>
+                <form id="login-form">
+                    
+                     <div class="form-group mb-3">
+                        <div class="input-wrapper">
+                        <span class="icon"><i class="fa-regular fa-envelope"></i></span>
+                        <input type="email" class="form-control inp-email" id="email" 
+                        placeholder="email">
+                        </div>
+                    </div>
+                      <div class="form-group mb-3">
+                        <div class="input-wrapper">
+                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" class="form-control inp-psw" id="password" 
+                        placeholder="password">
+                        </div>
+                    </div>
+                  <button type="submit" class="btn-auth">Đăng nhập</button>
+
+                </form>
+                <p class="login-link mt-3 ">Chưa có tài khoản ? <a href="register.html">Đăng kí</a></p>
+            </div>
+        </div>
+    </div>
+
+
+     <script src="./js/main.js"></script>
+     <script type="module" src="./firebase/login.js"></script>
+</html>
