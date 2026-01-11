@@ -87,6 +87,8 @@ html{
       background-color: #ffc107;
       color: black;
     }
+    
+
     .word-container {
       display: flex;
       align-items: center;
@@ -98,40 +100,6 @@ html{
     .banquyen:active {
       color: red;
       }
-    .nav{
-        height: 60px;
-        width: 100%;
-        background-color: #76ddd8;
-        position: fixed;
-        top: 0;
-        font-size:20px;
-        display: flex;
-        justify-content: space-between;
-        padding-left: 0;
-    } 
-    .nav-id{
-      text-decoration: none;
-      padding-inline-start: 10px;
-      margin-right: 10px;
-    }
-    
-    
-      
-    .nav-id1{
-        padding-left: 0;
-        color: white;
-        margin: auto 19px;
-    }
-    .nav-id2{
-        color: black;
-        margin: 0 8px 8px;
-        display: inline-block;
-        text-decoration: none;
-    }
-    .nav-id2 a{
-      text-decoration: none;
-      color:darkblue;
-    }
     .bar{
       background-image: white;
       list-style: none;
@@ -160,9 +128,12 @@ html{
       cursor: not-allowed;
     }
     .progress{
-      margin-top: 10px;
+      margin-top: 25px;
       margin-left: 10px;
       display: flex;
+      margin-bottom: 10px;
+      padding: 15px;
+      align-items: center;
     }
     
 

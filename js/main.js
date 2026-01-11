@@ -1,3 +1,4 @@
+
 const sectionProgress = {
   body: { remembered: 0, total: 0 },
   professional: { remembered: 0, total: 0 },
@@ -44,7 +45,11 @@ function updateProgress(section) {
   if (progressElement) {
     progressElement.textContent = `Tiến độ: ${percent}%`;
   }
-
+ if (percent === 100) {
+  const completeKey = `completed-${section}`;
+  const completeTime = new Date().toISOString();
+  localStorage.setItem(completeKey, completeTime);
+}
   showQuizButton(section, percent);
 
   if (percent === 100 && !progress.notified) {
@@ -116,31 +121,38 @@ let h = null, m = null, s = null;
 let timeout = null;
 
 function start() {
+  const hEl = document.getElementById('h');
+  const mEl = document.getElementById('m');
+  const sEl = document.getElementById('s');
+
+  // ✅ Nếu không có đồng hồ → KHÔNG CHẠY
+  if (!hEl || !mEl || !sEl) return;
+
   if (h === null) {
     h = parseInt(document.getElementById('h_val')?.value) || 0;
     m = parseInt(document.getElementById('m_val')?.value) || 4;
     s = parseInt(document.getElementById('s_val')?.value) || 59;
   }
 
-  if (s === -1) {
-    m--;
+  if (s < 0) {
     s = 59;
+    m--;
   }
 
-  if (m === -1) {
-    h--;
+  if (m < 0) {
     m = 59;
+    h--;
   }
 
-  if (h === -1) {
+  if (h < 0) {
     clearTimeout(timeout);
     alert('⏰ Hết giờ làm bài!');
     return;
   }
 
-  document.getElementById('h').innerText = String(h).padStart(2, '0');
-  document.getElementById('m').innerText = String(m).padStart(2, '0');
-  document.getElementById('s').innerText = String(s).padStart(2, '0');
+  hEl.innerText = String(h).padStart(2, '0');
+  mEl.innerText = String(m).padStart(2, '0');
+  sEl.innerText = String(s).padStart(2, '0');
 
   timeout = setTimeout(() => {
     s--;
@@ -148,13 +160,15 @@ function start() {
   }, 1000);
 }
 
-    document.getElementById('h').innerText = String(h);
-    document.getElementById('m').innerText = String(m);
-    document.getElementById('s').innerText = String(s);
-    timeout = setTimeout(() => {
-        s-- ;
-        start();
-    }, 1000);
+ const hEl = document.getElementById('h');
+const mEl = document.getElementById('m');
+const sEl = document.getElementById('s');
+
+if (hEl && mEl && sEl) {
+  hEl.innerText = String(h);
+  mEl.innerText = String(m);
+  sEl.innerText = String(s);
+}
 
 function noticeNewday() {
   const today = new Date().toDateString();
@@ -170,7 +184,7 @@ function noticeNewday() {
         const action = confirm(" Nhấn OK để học lại, hoặc Cancel để làm lại bài kiểm tra.");
 
         if (action) {
-          window.location.href = "index.php";
+          window.location.href = "index.html";
         } else {
           startQuiz(lastSection);
         }
@@ -183,7 +197,7 @@ function noticeNewday() {
 function submitTest() {
   alert('🎉 Nộp bài thành công! Đang chuyển về trang chủ...');
   setTimeout(function () {
-    window.location.href = "index.php";
+    window.location.href = "index.html";
   }, 1000); 
 }
 
@@ -214,11 +228,8 @@ window.addEventListener("DOMContentLoaded", () => {
     toggleForms();
   }
 });
-  if (percent === 100) {
-  const completeKey = `completed-${section}`;
-  const completeTime = new Date().toISOString();
-  localStorage.setItem(completeKey, completeTime);
-}
+
+ 
 function checkReviewOpportunity() {
   const now = new Date();
   const sections = Object.keys(sectionProgress);
@@ -377,7 +388,7 @@ function submitTest() {
 
   const homeButton = document.createElement("button");
   homeButton.textContent = "🏠 Về trang chủ";
-  homeButton.onclick = () => window.location.href = "index.php";
+  homeButton.onclick = () => window.location.href = "index.html";
 
   retryButton.style.marginRight = "10px";
 
@@ -400,3 +411,5 @@ function getSectionName() {
   if (title.includes("computer")) return "computer";
   return "";
 }
+
+

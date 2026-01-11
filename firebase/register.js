@@ -1,10 +1,12 @@
-import { auth, db }   from "./firebase";
+import { auth, db }   from './firebase.js';
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js"; 
 
 const inpUsername = document.querySelector("#username");
 const inpEmail = document.querySelector("#email");
 const inpPassword = document.querySelector("#password");
+const registerForm = document.querySelector("#resgister-form");
+
 const handleRegister = function (event){
     event.preventDefault();
     let username = inpUsername.value;
@@ -21,14 +23,15 @@ const handleRegister = function (event){
             const userData = {
                 username,
                 email,
-                password,role_id,
-                
+                password,
+                role_id,
+            
             }
             return addDoc(collection(db, "users"), userData);
     })
     .then(() => {
         alert("Đăng ký thành công");
-        window.location.href = "indexlog.php";
+        window.location.href = "login.html";
        })
        .catch((e) =>{
         alert("Đăng ký thất bại: " + e.message);
@@ -36,3 +39,5 @@ const handleRegister = function (event){
     
 
 }
+
+registerForm.addEventListener("submit", handleRegister);
