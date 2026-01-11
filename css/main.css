@@ -2,7 +2,7 @@ html{
     scroll-behavior: smooth;
 }
     body {
-      font-family: 'Segor UI',Arial, sans-serif;
+      font-family: Arial, sans-serif;
       padding: 0;
       background-color: #f0f4f8;
       margin: 0;
@@ -100,6 +100,40 @@ html{
     .banquyen:active {
       color: red;
       }
+<<<<<<< HEAD
+=======
+    .nav{
+        height: 60px;
+        width: 100%;
+        background-color: #76ddd8;
+        position: fixed;
+        top: 0;
+        font-size:20px;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 0;
+    } 
+    .nav-id{
+      text-decoration: none;
+      padding-inline-start: 10px;
+      margin-right: 10px;
+    }
+    .nav-id1{
+        padding-left: 0;
+        color: white;
+        margin: auto 19px;
+    }
+    .nav-id2{
+        color: black;
+        margin: 0 8px 8px;
+        display: inline-block;
+        text-decoration: none;
+    }
+    .nav-id2 a{
+      text-decoration: none;
+      color:darkblue;
+    }
+>>>>>>> f6ac3f8abfcb792814119a44818d6db425a7b573
     .bar{
       background-image: white;
       list-style: none;
@@ -135,5 +169,4 @@ html{
       padding: 15px;
       align-items: center;
     }
-    
 
