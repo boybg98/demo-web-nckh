@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Nút Đã Nhớ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .flashcard {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .button-group button {
+            margin: 4px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-remember {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-review {
+            background-color: #ffc107;
+            color: black;
+        }
+        
+        .progress {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+        
+        .console {
+            background: #1e1e1e;
+            color: #0f0;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        
+        .console-log {
+            margin: 2px 0;
+        }
+        
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Nút Đã Nhớ</h1>
+    <p>Hãy bấm các nút "Đã nhớ" để kiểm tra xem hoạt động hay không</p>
+    
+    <div class="test-section">
+        <h2>Section: Body</h2>
+        <div id="progress-body" class="progress">Tiến độ: 0%</div>
+        
+        <div class="flashcard">
+            <div class="word">head - đầu</div>
+            <div class="button-group">
+                <button class="btn-remember" data-section="body">Đã nhớ</button>
+                <button class="btn-review" data-section="body">Ôn lại</button>
+            </div>
+        </div>
+        
+        <div class="flashcard">
+            <div class="word">eye - mắt</div>
+            <div class="button-group">
+                <button class="btn-remember" data-section="body">Đã nhớ</button>
+                <button class="btn-review" data-section="body">Ôn lại</button>
+            </div>
+        </div>
+        
+        <div class="flashcard">
+            <div class="word">mouth - miệng</div>
+            <div class="button-group">
+                <button class="btn-remember" data-section="body">Đã nhớ</button>
+                <button class="btn-review" data-section="body">Ôn lại</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="console" id="console"></div>
+    
+    <script>
+        const sectionProgress = {
+            body: { remembered: 0, total: 0 },
+        };
+
+        function log(message) {
+            const console_div = document.getElementById('console');
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = 'console-log';
+            entry.textContent = `[${timestamp}] ${message}`;
+            console_div.appendChild(entry);
+            console_div.scrollTop = console_div.scrollHeight;
+        }
+
+        function initializeButtons() {
+            log('✅ Bắt đầu khởi tạo buttons');
+            
+            // Đếm tổng số từ mỗi section
+            document.querySelectorAll('.flashcard').forEach((card, index) => {
+                const section = card.querySelector('.btn-remember')?.dataset.section;
+                if (section && sectionProgress[section]) {
+                    sectionProgress[section].total++;
+                    log(`📍 Thêm flashcard #${index + 1} vào section: ${section}`);
+                }
+            });
+
+            log(`📊 Tổng từ body: ${sectionProgress.body.total}`);
+
+            // Gắn sự kiện cho nút "Đã nhớ"
+            document.querySelectorAll('.btn-remember').forEach((button, index) => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const section = this.dataset.section;
+                    log(`🖱️ Bấm "Đã nhớ" (button #${index + 1}) - section: ${section}`);
+                    
+                    if (!this.classList.contains('counted') && sectionProgress[section]) {
+                        sectionProgress[section].remembered++;
+                        this.classList.add('counted');
+                        this.style.backgroundColor = '#1e7e34';
+                        this.textContent = '✅ Đã nhớ';
+                        updateProgress(section);
+                        log(`✨ Đã nhớ! (${sectionProgress[section].remembered}/${sectionProgress[section].total})`);
+                    } else {
+                        log(`⚠️ Button đã được chọn hoặc section không tồn tại`);
+                    }
+                });
+            });
+
+            // Gắn sự kiện cho nút "Ôn lại"
+            document.querySelectorAll('.btn-review').forEach((button, index) => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const card = this.closest('.flashcard');
+                    const rememberButton = card.querySelector('.btn-remember');
+                    const section = rememberButton.dataset.section;
+                    
+                    log(`🔄 Bấm "Ôn lại" (button #${index + 1}) - section: ${section}`);
+                    
+                    if (rememberButton.classList.contains('counted') && sectionProgress[section]) {
+                        sectionProgress[section].remembered--;
+                        rememberButton.classList.remove('counted');
+                        rememberButton.style.backgroundColor = '#28a745';
+                        rememberButton.textContent = 'Đã nhớ';
+                        updateProgress(section);
+                        log(`🔄 Bỏ tích! (${sectionProgress[section].remembered}/${sectionProgress[section].total})`);
+                    } else {
+                        log(`⚠️ Button chưa được chọn`);
+                    }
+                });
+            });
+            
+            log('✅ Khởi tạo xong!');
+        }
+
+        function updateProgress(section) {
+            const progress = sectionProgress[section];
+            const percent = Math.round((progress.remembered / progress.total) * 100);
+            const progressElement = document.getElementById(`progress-${section}`);
+            if (progressElement) {
+                progressElement.textContent = `Tiến độ: ${percent}%`;
+                log(`📈 Cập nhật tiến độ: ${percent}%`);
+            }
+        }
+
+        // Khởi tạo khi trang tải
+        window.addEventListener('DOMContentLoaded', initializeButtons);
+    </script>
+</body>
+</html>

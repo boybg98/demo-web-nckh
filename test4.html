@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Sport</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/fonttest.css">
+    <script src="./js/main.js" defer></script>
+</head>
+<body>
+    <h1>Check test Sport</h1>
+    <input type="hidden" id="h_val" value="0">
+    <input type="hidden" id="m_val" value="3">
+    <input type="hidden" id="s_val" value="0">
+    <div>
+        Thời gian còn lại: 
+        <span id="h">0</span>:
+        <span id="m">03</span>:
+        <span id="s">00</span>
+    </div>
+    
+    <form id="test-form">
+        <fieldset>
+            <legend>Experience</legend>
+            <h2>Choose the correct option</h2>
+            <ol>
+                <li>
+                   <p class="questions"> athletics có nghĩa là ?</p> 
+                    <label><input name="answer1" type="radio" value="A">điền kinh</label>
+                    <label><input name="answer1" type="radio" value="B">quán quân</label>
+                    <label><input name="answer1" type="radio" value="C">vòng bán kết</label>
+                    <label><input name="answer1" type="radio" value="D">Huy chương vàng</label>
+                </li>
+                <br>
+                <li>
+                  <p class="questions"> championship có nghĩa là gì ?</p>
+                    <label><input name="answer2" type="radio" value="A">cuộc thi đấu </label>
+                    <label><input name="answer2" type="radio" value="B">điền kinh</label>
+                    <label><input name="answer2" type="radio" value="C">quán quân</label>
+                    <label><input name="answer2" type="radio" value="D">vòng bán kết</label>
+                </li>
+                <br>
+                <li>
+                    <p class="questions">semi-final có nghĩa là gì ?</p>
+                    <label><input name="answer3" type="radio" value="A">vòng bán kết</label>
+                    <label><input name="answer3" type="radio" value="B">huy chương vàng</label>
+                    <label><input name="answer3" type="radio" value="C">cuộc thi đấu</label>
+                    <label><input name="answer3" type="radio" value="D">điền kinh</label>
+                </li>
+                <br>
+                <li>
+                    <p class="questions"> gold-medal có nghĩa là gì ?</p> 
+                    <label><input name="answer4" type="radio" value="A">cuộc thi đấu</label>
+                    <label><input name="answer4" type="radio" value="B">điền kinh</label>
+                    <label><input name="answer4" type="radio" value="C">huy chương vàng</label>
+                    <label><input name="answer4" type="radio" value="D">quán quân</label>
+                </li>
+                <br>
+                <li>
+                    <p class="questions"> contest có nghĩa là gì?</p> 
+                    <label><input name="answer5" type="radio" value="A">cuộc thi đấu</label>
+                    <label><input name="answer5" type="radio" value="B">huy chương vàng</label>
+                    <label><input name="answer5" type="radio" value="C">quán quân</label>
+                    <label><input name="answer5" type="radio" value="D">điền kinh</label>
+                </li>
+            </ol>
+        </fieldset>
+        <fieldset>
+            <legend>FILL</legend>
+            <h2>Fill in the blank </h2>
+            <ol>
+                <li>athletics:<input name="q1" placeholder="keys" type="text"></li>
+                <li>championship:<input name="q2" placeholder="keys" type="text"></li>
+                <li>gold-medal:<input name="q3" placeholder="keys" type="text"></li>
+                <li>contest:<input name="q4" placeholder="keys" type="text"></li>
+                <li>semi-final:<input name="q5" placeholder="keys" type="text"></li>
+            </ol>
+        </fieldset>
+        <button type="submit" id="btn-submit" style="margin-top: 20px;">Nộp bài</button>
+    </form>
+
+    <div id="result-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2 style="color: #333;">🎉 Kết quả của bạn</h2>
+            <p id="score-text" style="font-size: 18px; margin: 20px 0;">Bạn đã đạt ... điểm.</p>
+            <p>Bạn có muốn nâng cấp lên trình độ: Khá?</p>
+            <button id="btn-upgrade" class="btn-next">Nâng cấp trình độ</button>
+        </div>
+    </div>
+
+    <style>
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 15px; text-align: center; width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); animation: popIn 0.3s ease; }
+        .btn-next { background: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        .btn-next:hover { background: #45a049; }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; text-decoration: line-through; }
+    </style>
+
+    <script>
+        document.getElementById('test-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const answers = {
+                answer1: "A", // điền kinh
+                answer2: "C", // quán quân (championship -> giải quán quân)
+                answer3: "A", // vòng bán kết
+                answer4: "C", // huy chương vàng
+                answer5: "A", // cuộc thi đấu
+                q1: "điền kinh",
+                q2: "giải quán quân", 
+                q3: "huy chương vàng",
+                q4: "cuộc thi đấu",
+                q5: "vòng bán kết"
+            };
+
+            let score = 0;
+            const totalQuestions = 10;
+
+            for (let i = 1; i <= 5; i++) {
+                const radios = document.getElementsByName(`answer${i}`);
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        if (radio.value === answers[`answer${i}`]) {
+                            score++;
+                            radio.parentElement.style.color = "green";
+                        } else {
+                            radio.parentElement.style.color = "red";
+                        }
+                    }
+                });
+            }
+
+            for (let i = 1; i <= 5; i++) {
+                const input = document.getElementsByName(`q${i}`)[0];
+                const val = input.value.trim().toLowerCase();
+                // Chấp nhận cả "quán quân" và "giải quán quân"
+                if (val === answers[`q${i}`] || (i===2 && val === "quán quân")) {
+                    score++;
+                    input.style.border = "2px solid green";
+                    input.style.color = "green";
+                } else {
+                    input.style.border = "2px solid red";
+                    input.style.color = "red";
+                }
+            }
+
+            // === PHẦN QUAN TRỌNG: LƯU ĐIỂM VÀO BỘ NHỚ ===
+            const percentage = (score / totalQuestions) * 100;
+            localStorage.setItem('test-completed-sport', 'true'); // Key cho Test 4
+            localStorage.setItem('test-score-sport', percentage); // Key cho Test 4
+            // ============================================
+
+            const modal = document.getElementById('result-modal');
+            document.getElementById('score-text').innerHTML = `Bạn đã đạt <strong>${score}/${totalQuestions}</strong> điểm.`;
+            modal.style.display = 'flex';
+        });
+
+        document.getElementById('btn-upgrade').addEventListener('click', function() {
+            window.location.href = 'testkha.html';
+        });
+    </script>
+</body>
+</html>

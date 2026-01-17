@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trạng thái bài kiểm tra</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .progress-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-left: 5px solid #6c757d;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        /* Hiệu ứng hover cho các item mở khóa */
+        .progress-item:not(.locked):not(.pending):hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .progress-item.completed {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        
+        .progress-item.locked {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+            opacity: 0.8;
+        }
+        
+        .progress-item.in-progress {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        
+        .item-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-badge.completed { background: #28a745; color: white; }
+        .status-badge.locked { background: #dc3545; color: white; }
+        .status-badge.in-progress { background: #ffc107; color: black; }
+        .status-badge.pending { background: #6c757d; color: white; }
+        
+        .item-details {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .score-bar {
+            margin-top: 10px;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            display: none; /* Ẩn mặc định */
+        }
+
+        .score-fill {
+            height: 100%;
+            background: #28a745;
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        
+        .back-btn {
+            display: block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .back-btn:hover { background: #764ba2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Trạng thái bài kiểm tra</h1>
+        <div id="progressContainer"></div>
+        <a href="index.html" class="back-btn">🏠 Quay lại trang chủ</a>
+    </div>
+    
+    <script>
+        // Cấu hình danh sách bài test và file tương ứng
+        const testData = [
+            { key: 'body', file: 'test1.html', name: 'Test 1: Cơ thể người', desc: 'Body Vocabulary' },
+            { key: 'professional', file: 'test2.html', name: 'Test 2: Nghề nghiệp', desc: 'Professional Vocabulary' },
+            { key: 'learning', file: 'test3.html', name: 'Test 3: Học tập', desc: 'Learning Vocabulary' },
+            { key: 'sport', file: 'test4.html', name: 'Test 4: Thể thao', desc: 'Sport Vocabulary' },
+            { key: 'computer', file: 'test5.html', name: 'Test 5: Máy tính', desc: 'Computer Vocabulary' }
+        ];
+        
+        function renderProgress() {
+            const container = document.getElementById('progressContainer');
+            container.innerHTML = '';
+            
+            testData.forEach((test, index) => {
+                // Lấy dữ liệu từ LocalStorage
+                const isCompleted = localStorage.getItem(`test-completed-${test.key}`);
+                const score = localStorage.getItem(`test-score-${test.key}`);
+                
+                // Logic xác định trạng thái
+                let status = 'locked';
+                let badgeText = 'Khóa';
+                let icon = '🔒';
+                let detailText = 'Hoàn thành bài trước để mở khóa';
+                
+                // Kiểm tra trạng thái
+                const prevTestKey = index > 0 ? testData[index - 1].key : null;
+                const isPrevCompleted = prevTestKey ? localStorage.getItem(`test-completed-${prevTestKey}`) : true;
+
+                if (isCompleted) {
+                    status = 'completed';
+                    badgeText = 'Hoàn thành';
+                    icon = '✅';
+                    detailText = `Đã làm xong. Nhấn để làm lại.`;
+                } else if (isPrevCompleted) {
+                    status = 'in-progress';
+                    badgeText = 'Sẵn sàng';
+                    icon = '🚀';
+                    detailText = 'Nhấn vào để bắt đầu làm bài';
+                } else {
+                    status = 'locked'; // Vẫn khóa nếu bài trước chưa xong
+                }
+
+                // Tạo HTML cho thẻ
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `progress-item ${status}`;
+                
+                // Sự kiện click chuyển trang
+                if (status !== 'locked') {
+                    itemDiv.onclick = function() {
+                        window.location.href = test.file;
+                    };
+                    itemDiv.title = "Nhấn để vào bài thi";
+                }
+
+                let scoreHtml = '';
+                if (status === 'completed' && score) {
+                    scoreHtml = `
+                        <div style="font-weight:bold; color:#28a745; margin-top:5px;">
+                            Điểm số: ${Math.round(score)}%
+                        </div>
+                        <div class="score-bar" style="display:block">
+                            <div class="score-fill" style="width: ${score}%"></div>
+                        </div>
+                    `;
+                }
+
+                itemDiv.innerHTML = `
+                    <div class="item-title">
+                        <span>${icon} ${test.name}</span>
+                        <span class="status-badge ${status}">${badgeText}</span>
+                    </div>
+                    <div class="item-details">
+                        ${test.desc}<br>
+                        <small>${detailText}</small>
+                    </div>
+                    ${scoreHtml}
+                `;
+                
+                container.appendChild(itemDiv);
+            });
+        }
+        
+        // Chạy khi tải trang
+        document.addEventListener('DOMContentLoaded', renderProgress);
+    </script>
+</body>
+</html>

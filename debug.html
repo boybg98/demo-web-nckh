@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Test Access System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #4ec9b0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4ec9b0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #9cdcfe;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #1e1e1e;
+            border-left: 3px solid #ce9178;
+            border-radius: 4px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: background 0.3s ease;
+        }
+        
+        button:hover {
+            background: #005a9e;
+        }
+        
+        button.danger {
+            background: #f48771;
+        }
+        
+        button.danger:hover {
+            background: #d84a3a;
+        }
+        
+        button.success {
+            background: #4ec9b0;
+        }
+        
+        button.success:hover {
+            background: #36a893;
+        }
+        
+        .output {
+            background: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 5px 0;
+            background: #252526;
+            border-radius: 4px;
+        }
+        
+        .status-key {
+            color: #9cdcfe;
+        }
+        
+        .status-value {
+            color: #ce9178;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #6a9955;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .back-btn:hover {
+            background: #558a3d;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background: #252526;
+            color: #4ec9b0;
+        }
+        
+        tr:nth-child(even) {
+            background: #252526;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐛 Debug - Hệ Thống Kiểm tra Truy cập Test</h1>
+        
+        <div class="section">
+            <h2>📊 Thông tin LocalStorage</h2>
+            <div id="storageInfo"></div>
+            <button onclick="updateStorageInfo()" class="success">🔄 Cập nhật</button>
+        </div>
+        
+        <div class="section">
+            <h2>🧪 Tạo dữ liệu test</h2>
+            <p>Nhấn nút để tạo dữ liệu test (để kiểm tra hệ thống):</p>
+            <button onclick="simulateCompleteLesson()">✅ Hoàn thành tất cả bài học (100%)</button>
+            <button onclick="simulateCompleteTests()">✅ Hoàn thành tất cả bài test</button>
+            <button onclick="simulatePartialCompletion()">⏳ Hoàn thành riêng lẻ</button>
+        </div>
+        
+        <div class="section">
+            <h2>🗑️ Xóa dữ liệu</h2>
+            <button onclick="clearSpecificKey()" class="danger">🗑️ Xóa test riêng lẻ</button>
+            <button onclick="clearAllStorage()" class="danger">🗑️ Xóa tất cả dữ liệu</button>
+            <button onclick="clearLearnData()" class="danger">🗑️ Xóa dữ liệu học</button>
+            <button onclick="clearTestData()" class="danger">🗑️ Xóa dữ liệu test</button>
+        </div>
+        
+        <div class="section">
+            <h2>🔍 Kiểm tra truy cập Test</h2>
+            <button onclick="checkTestAccess('body')">Check Body Test</button>
+            <button onclick="checkTestAccess('professional')">Check Professional Test</button>
+            <button onclick="checkTestAccess('learning')">Check Learning Test</button>
+            <button onclick="checkTestAccess('sport')">Check Sport Test</button>
+            <button onclick="checkTestAccess('computer')">Check Computer Test</button>
+            <div id="accessOutput" class="output" style="display:none;"></div>
+        </div>
+        
+        <div class="section">
+            <h2>⚡ Hành động nhanh</h2>
+            <button onclick="openProgressPage()">📊 Mở trang Tiến độ</button>
+            <button onclick="openHomePage()">🏠 Mở trang chủ</button>
+            <button onclick="reloadPage()">🔄 Reload trang này</button>
+        </div>
+        
+        <a href="index.html" class="back-btn">← Quay lại trang chủ</a>
+    </div>
+    
+    <script>
+        function updateStorageInfo() {
+            const info = document.getElementById('storageInfo');
+            const table = document.createElement('table');
+            
+            table.innerHTML = `
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            `;
+            
+            const keys = Object.keys(localStorage);
+            keys.forEach(key => {
+                const row = table.insertRow();
+                const keyCell = row.insertCell(0);
+                const valueCell = row.insertCell(1);
+                keyCell.className = 'status-key';
+                valueCell.className = 'status-value';
+                keyCell.textContent = key;
+                valueCell.textContent = localStorage.getItem(key);
+            });
+            
+            if (keys.length === 0) {
+                table.innerHTML += `<tr><td colspan="2" style="text-align:center;color:#999;">LocalStorage trống</td></tr>`;
+            }
+            
+            info.innerHTML = '';
+            info.appendChild(table);
+        }
+        
+        function simulateCompleteLesson() {
+            const sections = ['body', 'professional', 'learning', 'sport', 'computer'];
+            sections.forEach(section => {
+                localStorage.setItem(`completed-${section}`, new Date().toISOString());
+            });
+            alert('✅ Đã tạo dữ liệu: Hoàn thành tất cả bài học (100%)');
+            updateStorageInfo();
+        }
+        
+        function simulateCompleteTests() {
+            const sections = ['body', 'professional', 'learning', 'sport', 'computer'];
+            sections.forEach(section => {
+                localStorage.setItem(`test-completed-${section}`, new Date().toISOString());
+                localStorage.setItem(`test-score-${section}`, 100);
+            });
+            alert('✅ Đã tạo dữ liệu: Hoàn thành tất cả bài test (100%)');
+            updateStorageInfo();
+        }
+        
+        function simulatePartialCompletion() {
+            // Hoàn thành bài học 1, 2 và test 1
+            localStorage.setItem('completed-body', new Date().toISOString());
+            localStorage.setItem('completed-professional', new Date().toISOString());
+            localStorage.setItem('test-completed-body', new Date().toISOString());
+            localStorage.setItem('test-score-body', 95);
+            alert('✅ Đã tạo dữ liệu: Hoàn thành Body & Professional learn + Body test');
+            updateStorageInfo();
+        }
+        
+        function clearSpecificKey() {
+            const key = prompt('Nhập key muốn xóa (VD: completed-body):');
+            if (key && localStorage.getItem(key)) {
+                localStorage.removeItem(key);
+                alert(`✅ Đã xóa: ${key}`);
+                updateStorageInfo();
+            } else if (key) {
+                alert('❌ Key không tồn tại');
+            }
+        }
+        
+        function clearAllStorage() {
+            if (confirm('⚠️ Bạn chắc chắn muốn xóa TẤT CẢ dữ liệu?')) {
+                localStorage.clear();
+                alert('✅ Đã xóa tất cả dữ liệu');
+                updateStorageInfo();
+            }
+        }
+        
+        function clearLearnData() {
+            const sections = ['body', 'professional', 'learning', 'sport', 'computer'];
+            sections.forEach(section => {
+                localStorage.removeItem(`completed-${section}`);
+            });
+            alert('✅ Đã xóa dữ liệu học');
+            updateStorageInfo();
+        }
+        
+        function clearTestData() {
+            const sections = ['body', 'professional', 'learning', 'sport', 'computer'];
+            sections.forEach(section => {
+                localStorage.removeItem(`test-completed-${section}`);
+                localStorage.removeItem(`test-score-${section}`);
+            });
+            alert('✅ Đã xóa dữ liệu test');
+            updateStorageInfo();
+        }
+        
+        function checkTestAccess(section) {
+            const output = document.getElementById('accessOutput');
+            output.style.display = 'block';
+            
+            const testOrder = ['body', 'professional', 'learning', 'sport', 'computer'];
+            const currentIndex = testOrder.indexOf(section);
+            
+            let result = `🔍 Kiểm tra truy cập: ${section}\n`;
+            result += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            result += `Thứ tự: Test ${currentIndex + 1}\n`;
+            
+            if (currentIndex === 0) {
+                result += `\n✅ Test đầu tiên luôn được phép\n`;
+                result += `Có thể vào: CÓ ✓\n`;
+            } else {
+                const previousSection = testOrder[currentIndex - 1];
+                const previousCompleted = localStorage.getItem(`test-completed-${previousSection}`);
+                
+                result += `\nTest trước: ${previousSection} (Test ${currentIndex})\n`;
+                result += `Trạng thái: ${previousCompleted ? '✅ Hoàn thành' : '❌ Chưa hoàn thành'}\n`;
+                result += `Có thể vào: ${previousCompleted ? 'CÓ ✓' : 'KHÔNG ✗'}\n`;
+            }
+            
+            output.textContent = result;
+        }
+        
+        function openProgressPage() {
+            window.location.href = 'progress-status.html';
+        }
+        
+        function openHomePage() {
+            window.location.href = 'index.html';
+        }
+        
+        function reloadPage() {
+            window.location.reload();
+        }
+        
+        // Cập nhật thông tin khi tải trang
+        window.addEventListener('DOMContentLoaded', updateStorageInfo);
+    </script>
+</body>
+</html>
