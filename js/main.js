@@ -412,4 +412,78 @@ function getSectionName() {
   return "";
 }
 
+// Search functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchInput');
+  const searchSuggestions = document.getElementById('searchSuggestions');
+
+  if (searchInput && searchSuggestions) {
+    const searchItems = [
+      { id: 'body', title: 'Chủ đề: Cơ thể người (Body)' },
+      { id: 'professional', title: 'Chủ đề: Nghề nghiệp (Professional)' },
+      { id: 'learning', title: 'Chủ đề: Học tập (Learning)' },
+      { id: 'sport', title: 'Chủ đề: Thể thao (Sport)' },
+      { id: 'computer', title: 'Chủ đề: Máy tính (Computer)' }
+    ];
+
+    // Collect all vocabulary words dynamically
+    document.querySelectorAll('.flashcard').forEach((card, index) => {
+      const wordEl = card.querySelector('.word');
+      const meaningEl = card.querySelector('.meaning');
+      const sectionEl = card.querySelector('.btn-remember');
+      
+      if (wordEl && meaningEl && sectionEl) {
+        const wordText = wordEl.textContent.replace('🔊', '').trim();
+        const meaningText = meaningEl.textContent.trim();
+        const sectionId = sectionEl.dataset.section;
+        
+        const cardContainer = card.closest('li') || card.closest('.flashcard-container');
+        if (cardContainer) {
+          const cardId = `word-${sectionId}-${index}`;
+          cardContainer.id = cardId;
+          
+          searchItems.push({
+            id: cardId,
+            title: `Từ vựng: ${wordText} - ${meaningText}`
+          });
+        }
+      }
+    });
+
+    searchInput.addEventListener('input', function() {
+      const keyword = this.value.toLowerCase().trim();
+      searchSuggestions.innerHTML = '';
+      
+      if (keyword) {
+        const filteredItems = searchItems.filter(item => 
+          item.title.toLowerCase().includes(keyword)
+        );
+
+        if (filteredItems.length > 0) {
+          searchSuggestions.style.display = 'block';
+          filteredItems.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a class="dropdown-item" href="#${item.id}" style="white-space: normal;">${item.title}</a>`;
+            li.addEventListener('click', () => {
+              searchSuggestions.style.display = 'none';
+              searchInput.value = '';
+            });
+            searchSuggestions.appendChild(li);
+          });
+        } else {
+          searchSuggestions.style.display = 'block';
+          searchSuggestions.innerHTML = '<li class="dropdown-item text-muted" style="white-space: normal;">Không tìm thấy kết quả</li>';
+        }
+      } else {
+        searchSuggestions.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+        searchSuggestions.style.display = 'none';
+      }
+    });
+  }
+});
 

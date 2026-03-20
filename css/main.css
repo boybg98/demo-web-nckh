@@ -1,172 +1,193 @@
-html{
+/* --- PHẦN GIAO DIỆN CHUNG (GIỮ NGUYÊN) --- */
+html {
     scroll-behavior: smooth;
 }
-    body {
-      font-family: Arial, sans-serif;
-      padding: 0;
-      background-color: #f0f4f8;
-      margin: 0;
-    }
 
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-top: 80px;
-    }
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background-color: #f0f4f8;
+    margin: 0;
+}
 
-    .intro {
-      max-width: 600px;
-      margin: 0 auto 30px;
-      font-size: 18px;
-      color: #555;
-      text-align: center;
-    }
-    #body div{
-      font-size:18px;
-    }
-    #professional div{
-      font-size:18px;
-    }
-    #learning div{
-      font-size:18px;
-    }
-    #sport div{
-      font-size:18px;
-    }
-    #computer div{
-      font-size:18px;
-    }
-    .flashcard {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 16px;
-      width:95%;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-    }
-    .flashcard:hover {
-      transform: scale(1.03);
-      background-color: #e6f7ff;
-    }
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 80px;
+}
 
-     .word {
-      font-size: 20px !important;
-      font-weight: bold;
-      color: #007bff;
-    }
+.intro {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    line-height: 1.6;
+}
 
-    .meaning {
-      font-size: 18px;
-      margin: 6px 0;
-      color: #333;
-    }
+/* Kiểu chữ cho các tiêu đề chủ đề */
+section fieldset {
+    border: none;
+    padding: 0;
+    margin: 40px 0 10px 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 22px;
+}
 
-    .example {
-      font-size: 18px;
-      font-style: italic;
-      color: #666;
-      margin-bottom: 10px;
-    }
-
-    .button-group button {
-      margin: 4px;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-remember {
-      background-color: #28a745;
-      color: white;
-    }
-
-    .btn-review {
-      background-color: #ffc107;
-      color: black;
-    }
+/* --- PHẦN TIẾN ĐỘ (PROGRESS) - ĐÃ SỬA LỖI BỊ ĐÈ --- */
+/* Thay thế từ dòng 149 */
+/* --- PHẦN TIẾN ĐỘ (PROGRESS) - SỬA LỖI CHỮ BÉ --- */
+.progress {
+    font-size: 19px !important;      /* Giảm xuống 19px để chữ thanh thoát và nhỏ hơn tiêu đề */
+    font-weight: bold;               /* Giữ độ đậm để dễ đọc */
+    color: #2c3e50;                  /* Màu chữ tối rõ nét */
     
+    background-color: #e9ecef;       /* Màu nền xám nhạt */
+    border-radius: 8px;              /* Bo góc */
+    margin: 20px;                    
+    padding: 12px 20px;              /* Thêm padding trên/dưới để chữ không bị chạm biên */
+    
+    display: flex;                   /* Dùng flexbox để căn chỉnh */
+    align-items: center;             /* Căn chữ vào chính giữa thanh theo chiều dọc */
+    justify-content: flex-start;     /* Căn chữ về bên trái */
+    
+    min-height: 45px;                /* Đảm bảo thanh đủ cao để chứa chữ rõ ràng */
+    width: auto;
+    box-sizing: border-box;          /* Giúp tính toán kích thước chuẩn xác hơn */
+    border: none;
+}
+/* --- PHẦN TỪ VỰNG: 5 Ô THẲNG HÀNG NGANG --- */
+section ol {
+    display: flex;              /* Dàn hàng ngang */
+    flex-wrap: nowrap;          /* Giữ 5 ô trên 1 hàng */
+    gap: 15px;                  /* Khoảng cách giữa các ô */
+    padding: 0 20px;            /* Thụt lề 2 bên */
+    list-style: none;           /* Bỏ số thứ tự */
+    margin: 20px 0;
+    align-items: stretch;       /* Ép các ô cao bằng nhau */
+}
 
-    .word-container {
-      display: flex;
-      align-items: center;
-    }
-    .banquyen {
-      color: black;
-      font-size: 15px;
-    }
-    .banquyen:active {
-      color: red;
-      }
-<<<<<<< HEAD
-=======
-    .nav{
-        height: 60px;
-        width: 100%;
-        background-color: #76ddd8;
-        position: fixed;
-        top: 0;
-        font-size:20px;
-        display: flex;
-        justify-content: space-between;
-        padding-left: 0;
-    } 
-    .nav-id{
-      text-decoration: none;
-      padding-inline-start: 10px;
-      margin-right: 10px;
-    }
-    .nav-id1{
-        padding-left: 0;
-        color: white;
-        margin: auto 19px;
-    }
-    .nav-id2{
-        color: black;
-        margin: 0 8px 8px;
-        display: inline-block;
-        text-decoration: none;
-    }
-    .nav-id2 a{
-      text-decoration: none;
-      color:darkblue;
-    }
->>>>>>> f6ac3f8abfcb792814119a44818d6db425a7b573
-    .bar{
-      background-image: white;
-      list-style: none;
-      justify-content: center;
-      justify-content: center;
-      
-    }
-    .bar-id{
-      font-size:20px;
-      display: inline-block;
-      text-decoration: none;
-    }
-    .bar-id a{
-      text-decoration: none;
-      color:blue;
-    }
-    .bar ul{
-      text-decoration: none;
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-      padding: 0;
-    }
-    .quiz-button:disabled {
-      background-color: rgba(245, 235, 111, 2);
-      cursor: not-allowed;
-    }
-    .progress{
-      margin-top: 25px;
-      margin-left: 10px;
-      display: flex;
-      margin-bottom: 10px;
-      padding: 15px;
-      align-items: center;
-    }
+section ol li {
+    flex: 1;                    /* Chia đều chiều rộng */
+    min-width: 0;
+}
 
+.flashcard {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flashcard:hover {
+    transform: scale(1.03);
+    background-color: #f8fbff;
+    border-color: #007bff;
+}
+
+.word {
+    font-size: 20px !important;
+    font-weight: bold;
+    color: #007bff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.word button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+
+.meaning {
+    font-size: 17px;
+    margin: 10px 0;
+    color: #333;
+    font-weight: 500;
+}
+
+.example {
+    font-size: 15px;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;               /* Đẩy nút bấm xuống đáy */
+}
+
+/* --- NHÓM NÚT BẤM (BUTTONS) --- */
+.button-group {
+    display: flex;
+    flex-direction: column;     /* Xếp dọc nút để vừa khung 5 ô */
+    gap: 6px;
+}
+
+.button-group button {
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    transition: opacity 0.2s;
+}
+
+.btn-remember {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-review {
+    background-color: #ffc107;
+    color: black;
+}
+
+.btn-remember.counted {
+    background-color: #1e7e34;
+}
+
+/* --- CÁC PHẦN KHÁC --- */
+.bar ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    padding: 20px 0;
+}
+
+.bar-id a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #007bff;
+    font-size: 18px;
+}
+
+.banquyen {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin: 50px 0 20px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    section ol { flex-wrap: wrap; }
+    section ol li { flex: 0 0 calc(50% - 15px); }
+}
+
+@media (max-width: 600px) {
+    section ol li { flex: 0 0 100%; }
+}

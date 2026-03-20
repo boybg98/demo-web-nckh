@@ -26,6 +26,12 @@
               <img src="./img/logo.png" alt="logo web">
             </div>
             <ul class="nav pe-4 align-items-center">
+              <li class="nav-id search-box" style="position: relative; margin-right: 15px;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; z-index: 10;"></i>
+                <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Tìm kiếm chủ đề, từ vựng..." autocomplete="off" style="width: 250px; border-radius: 20px; padding: 5px 15px 5px 32px; border: 1px solid #ccc;">
+                <ul id="searchSuggestions" class="dropdown-menu shadow" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; margin-top: 5px; border-radius: 8px; max-height: 300px; overflow-y: auto;">
+                </ul>
+              </li>
               <li class="nav-id">
                 <a href="index.html" class="nav-link text-white">Home</a>
               </li>
@@ -128,11 +134,11 @@
         <div class="flashcard">
           <div class="word">stomach <button onclick="speakWord('stomach')">🔊</button></div>          
           <div class="meaning">bụng</div>
+          <div class="example"><em>He has a pain in his stomach.</em><button onclick="speakWord('He has a pain in his stomach')">🔊</button></div>         
           <span class="button-group">
              <button class="btn-remember" data-section="body">Đã nhớ</button>
              <button class="btn-review" data-section="body">Ôn lại</button>
           </span>
-          <div class="example"><em>He has a pain in his stomach.</em><button onclick="speakWord('He has a pain in his stomach')">🔊</button></div>         
         </div>
       </div>
     </li>
@@ -163,7 +169,7 @@
         <div class="flashcard">
           <div class="word">doctor <button onclick="speakWord('doctor')">🔊</button></div>         
           <div class="meaning">bác sĩ</div>
-          <div class="example"><em>The doctor examined the patient.</em><button onclick="speakWord('The doctor examined the patient')">🔊</button></div>       
+          <div class="example"><em>My father is a dedicated doctor at the city hospital.</em><button onclick="speakWord('My father is a dedicated doctor at the city hospital.')">🔊</button></div>       
           <span class="button-group">
              <button class="btn-remember" data-section="professional">Đã nhớ</button>
              <button class="btn-review" data-section="professional">Ôn lại</button>
@@ -176,7 +182,7 @@
         <div class="flashcard">
           <div class="word">police <button onclick="speakWord('police')">🔊</button></div>          
           <div class="meaning">công an</div>
-          <div class="example"><em>The police officer directed the traffic.</em><button onclick="speakWord('The police officer directed the traffic')">🔊</button></div>        
+          <div class="example"><em>The police officer directed the traffic</em><button onclick="speakWord('The police officer directed the traffic')">🔊</button></div>        
           <span class="button-group">
              <button class="btn-remember" data-section="professional">Đã nhớ</button>
              <button class="btn-review" data-section="professional">Ôn lại</button>
@@ -189,7 +195,7 @@
         <div class="flashcard">
           <div class="word">worker <button onclick="speakWord('worker')">🔊</button></div>          
           <div class="meaning">công nhân</div>
-          <div class="example"><em>The worker is building a house.</em><button onclick="speakWord('The worker is building a house')">🔊</button></div>        
+          <div class="example"><em>The factory employs more than 500 workers</em><button onclick="speakWord('The factory employs more than 500 workers')">🔊</button></div>        
           <span class="button-group">
              <button class="btn-remember" data-section="professional">Đã nhớ</button>
              <button class="btn-review" data-section="professional">Ôn lại</button>
