@@ -74,17 +74,30 @@
                 <li>train:<input name="q3" placeholder="keys" type="text"></li>
                 <li>copy:<input name="q4" placeholder="keys" type="text"></li>
                 <li>read:<input name="q5" placeholder="keys" type="text"></li>
+                <li>write:<input name="q6" placeholder="keys" type="text"></li>
+                <li>listen:<input name="q7" placeholder="keys" type="text"></li>
+                <li>speak:<input name="q8" placeholder="keys" type="text"></li>
+                <li>practice:<input name="q9" placeholder="keys" type="text"></li>
+                <li>homework:<input name="q10" placeholder="keys" type="text"></li>
             </ol>
         </fieldset>
-        <button type="submit" id="btn-submit" style="margin-top: 20px;">Nộp bài</button>
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" id="btn-submit" style="padding: 12px 30px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Nộp bài</button>
+        </div>
     </form>
+    <div style="text-align: center; margin-top: 15px; margin-bottom: 40px;">
+        <button type="button" onclick="window.location.href='index.html'" style="padding: 10px 20px; font-size: 16px; background-color: #2196f3; color: white; border: none; border-radius: 5px; cursor: pointer;">🏠 Quay về trang chủ</button>
+    </div>
 
     <div id="result-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <h2 style="color: #333;">🎉 Kết quả của bạn</h2>
             <p id="score-text" style="font-size: 18px; margin: 20px 0;">Bạn đã đạt ... điểm.</p>
             <p>Bạn có muốn nâng cấp lên trình độ: Khá?</p>
-            <button id="btn-upgrade" class="btn-next">Nâng cấp trình độ</button>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <button id="btn-upgrade" class="btn-next" style="margin-top: 0;">Nâng cấp</button>
+                <button onclick="window.location.href='index.html'" class="btn-next" style="margin-top: 0; background: #6c757d;">Về trang chủ</button>
+            </div>
         </div>
     </div>
 
@@ -112,11 +125,16 @@
                 q2: "bình luận chú thích",
                 q3: "đào tạo",
                 q4: "ghi chép",
-                q5: "đọc"
+                q5: "đọc",
+                q6: "viết",
+                q7: "nghe",
+                q8: "nói",
+                q9: "thực hành",
+                q10: "bài tập về nhà"
             };
 
             let score = 0;
-            const totalQuestions = 10;
+            const totalQuestions = 15;
 
             for (let i = 1; i <= 5; i++) {
                 const radios = document.getElementsByName(`answer${i}`);
@@ -132,7 +150,7 @@
                 });
             }
 
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 10; i++) {
                 const input = document.getElementsByName(`q${i}`)[0];
                 const val = input.value.trim().toLowerCase();
                 // Chấp nhận "bình luận" cho câu 2

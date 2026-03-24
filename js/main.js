@@ -287,23 +287,28 @@ function submitTest() {
   const correctAnswersMap = {
     body: {
       answer1: "B", answer2: "A", answer3: "B", answer4: "B", answer5: "A",
-      q1: "head", q2: "ear", q3: "face", q4: "stomach", q5: "mouth"
+      q1: "head", q2: "ear", q3: "face", q4: "stomach", q5: "mouth",
+      q6: "hand", q7: "leg", q8: "foot", q9: "arm", q10: "nose"
     },
     professional: {
       answer1: "A", answer2: "C", answer3: "A", answer4: "B", answer5: "A",
-      q1: "doctor", q2: "teacher", q3: "police", q4: "worker", q5: "driver"
+      q1: "doctor", q2: "teacher", q3: "police", q4: "worker", q5: "driver",
+      q6: "engineer", q7: "nurse", q8: "actor", q9: "pilot", q10: "chef"
     },
     learning: {
       answer1: "A", answer2: "B", answer3: "B", answer4: "C", answer5: "A",
-      q1: "study", q2: "comment", q3: "train", q4: "copy", q5: "read"
+      q1: "study", q2: "comment", q3: "train", q4: "copy", q5: "read",
+      q6: "write", q7: "listen", q8: "speak", q9: "practice", q10: "homework"
     },
     sport: {
       answer1: "A", answer2: "C", answer3: "A", answer4: "C", answer5: "A",
-      q1: "athletics", q2: "championship", q3: "gold-medal", q4: "contest", q5: "semi-final"
+      q1: "athletics", q2: "championship", q3: "gold-medal", q4: "contest", q5: "semi-final",
+      q6: "football", q7: "swimmer", q8: "tennis", q9: "stadium", q10: "coach"
     },
     computer: {
       answer1: "A", answer2: "A", answer3: "D", answer4: "C", answer5: "D",
-      q1: "keyboard", q2: "compiler", q3: "decoder", q4: "flowchart", q5: "data"
+      q1: "keyboard", q2: "compiler", q3: "decoder", q4: "flowchart", q5: "data",
+      q6: "mouse", q7: "screen", q8: "hardware", q9: "software", q10: "network"
     }
   };
 
@@ -354,7 +359,7 @@ function submitTest() {
 
 
   // Chấm điền từ
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 10; i++) {
     const input = document.getElementsByName(`q${i}`)[0];
     if (input && !input.nextElementSibling?.textContent?.includes("✅") && !input.nextElementSibling?.textContent?.includes("❌")) {
       const result = document.createElement("span");
@@ -487,3 +492,71 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function showTopic(topicId) {
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('flashcard-view').style.display = 'block';
+  
+  const topics = ['body', 'professional', 'learning', 'sport', 'computer'];
+  topics.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+  });
+  
+  const target = document.getElementById(topicId);
+  if(target) target.style.display = 'block';
+  window.scrollTo(0,0);
+}
+window.showTopic = showTopic;
+
+function showHome() {
+  document.getElementById('home-view').style.display = 'block';
+  document.getElementById('flashcard-view').style.display = 'none';
+  window.scrollTo(0,0);
+}
+window.showHome = showHome;
+
+// --- 3D FLIP FLASHCARD TRANSFORMATION ---
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.flashcard').forEach(card => {
+    if (card.querySelector('.flashcard-inner')) return; // Prevent double transform
+
+    const wordEl = card.querySelector('.word');
+    const meaningEl = card.querySelector('.meaning');
+    const exampleEl = card.querySelector('.example');
+    const btnGroup = card.querySelector('.button-group');
+
+    const inner = document.createElement('div');
+    inner.className = 'flashcard-inner';
+
+    const front = document.createElement('div');
+    front.className = 'flashcard-front';
+    const frontWord = wordEl ? wordEl.cloneNode(true) : null;
+    if (frontWord) {
+        front.appendChild(frontWord);
+    }
+
+    const back = document.createElement('div');
+    back.className = 'flashcard-back';
+    
+    // We keep original DOM elements for the back face
+    // This perfectly preserves all original Javascript bindings!
+    if (wordEl) back.appendChild(wordEl);
+    if (meaningEl) back.appendChild(meaningEl);
+    if (exampleEl) back.appendChild(exampleEl);
+    if (btnGroup) back.appendChild(btnGroup);
+
+    inner.appendChild(front);
+    inner.appendChild(back);
+
+    card.replaceChildren(inner);
+
+    card.addEventListener('click', function(e) {
+      this.classList.toggle('flipped');
+    });
+
+    const preventFlip = function(e) { e.stopPropagation(); };
+    card.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', preventFlip);
+    });
+  });
+});

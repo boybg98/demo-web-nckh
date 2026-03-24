@@ -57,11 +57,11 @@ section fieldset {
     box-sizing: border-box;          /* Giúp tính toán kích thước chuẩn xác hơn */
     border: none;
 }
-/* --- PHẦN TỪ VỰNG: 5 Ô THẲNG HÀNG NGANG --- */
+/* --- PHẦN TỪ VỰNG: 5 Ô MỖI HÀNG --- */
 section ol {
     display: flex;              /* Dàn hàng ngang */
-    flex-wrap: nowrap;          /* Giữ 5 ô trên 1 hàng */
-    gap: 15px;                  /* Khoảng cách giữa các ô */
+    flex-wrap: wrap;            /* Cho phép rớt dòng để tạo 2 hàng */
+    gap: 20px 15px;             /* Khoảng cách: dọc 20px, ngang 15px */
     padding: 0 20px;            /* Thụt lề 2 bên */
     list-style: none;           /* Bỏ số thứ tự */
     margin: 20px 0;
@@ -69,29 +69,76 @@ section ol {
 }
 
 section ol li {
-    flex: 1;                    /* Chia đều chiều rộng */
+    flex: 0 0 calc((100% - 60px) / 5); /* Chia đều 5 ô mỗi hàng */
     min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Update flashcard for 3D flip */
+.flashcard-container {
+    perspective: 1000px;
+    height: 100%;
 }
 
 .flashcard {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: transparent;
+    border: none;
     border-radius: 12px;
-    padding: 15px;
     width: 100%;
     height: 100%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    
+    min-height: 260px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: none;
+    display: block;
+    padding: 0;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.flashcard:hover {
-    transform: scale(1.03);
-    background-color: #f8fbff;
+.flashcard-front {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    align-items: center;
+    justify-content: center;
+}
+.flashcard-front:hover {
     border-color: #007bff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.flashcard-back {
+    background-color: #f8fbff;
+    border: 1px solid #007bff;
+    transform: rotateY(180deg);
+    align-items: flex-start;
+    text-align: left;
 }
 
 .word {
@@ -101,6 +148,15 @@ section ol li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.flashcard-front .word {
+    font-size: 26px !important;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.flashcard-back .word {
+    width: 100%;
 }
 
 .word button {
@@ -190,4 +246,42 @@ section ol li {
 
 @media (max-width: 600px) {
     section ol li { flex: 0 0 100%; }
+}
+
+/* --- TOPIC GRID --- */
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+.topic-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.topic-card-img {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f4f8;
+}
+.topic-card-title {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #495057;
+    text-align: center;
+    text-transform: uppercase;
+    border-top: 1px solid #f1f3f5;
 }

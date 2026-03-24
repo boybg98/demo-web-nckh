@@ -2,454 +2,939 @@
 <html lang="vi">
 
 <link>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <script src="./js/main.js" defer></script>
-    <link rel="stylesheet" href="./test/test1.html">
-    <title>Trang chủ </title>
-    <link rel="icon" href="./img/logo.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/index.css">
+<script src="./js/main.js" defer></script>
+<link rel="stylesheet" href="./test/test1.html">
+<title>Trang chủ </title>
+<link rel="icon" href="./img/logo.ico">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<!--Font awesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+  integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--Font roboto-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet">
 </head>
 
 <body>
-    <div class="page-wrapper">
-       <div class="banner-group">
-        <header>
-          <div class="container d-flex justify-content-between align-items-center">
-            <div class="logo">
-              <img src="./img/logo.png" alt="logo web">
-            </div>
-            <ul class="nav pe-4 align-items-center">
-              <li class="nav-id search-box" style="position: relative; margin-right: 15px;">
-                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; z-index: 10;"></i>
-                <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Tìm kiếm chủ đề, từ vựng..." autocomplete="off" style="width: 250px; border-radius: 20px; padding: 5px 15px 5px 32px; border: 1px solid #ccc;">
-                <ul id="searchSuggestions" class="dropdown-menu shadow" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; margin-top: 5px; border-radius: 8px; max-height: 300px; overflow-y: auto;">
-                </ul>
-              </li>
-              <li class="nav-id">
-                <a href="index.html" class="nav-link text-white">Home</a>
-              </li>
-              <li class="nav-id">
-                <a href="progress-status.html" class="nav-link text-white">📊 Tiến độ</a>
-              </li>
-              <div class="profile">
-                <button type="button" id="profile-dropdown"
-                class="dropdown-toggle btn btn-outline-light" 
+  <div class="page-wrapper">
+    <div class="banner-group">
+      <header>
+        <div class="container-fluid px-4 px-lg-5 d-flex justify-content-between align-items-center w-100">
+          <div class="logo">
+            <img src="./img/logo.png" alt="logo web">
+          </div>
+          <ul class="nav pe-4 align-items-center">
+            <li class="nav-id search-box" style="position: relative; margin-right: 15px;">
+              <i class="fa-solid fa-magnifying-glass"
+                style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; z-index: 10;"></i>
+              <input type="text" id="searchInput" class="form-control form-control-sm"
+                placeholder="Tìm kiếm chủ đề, từ vựng..." autocomplete="off"
+                style="width: 250px; border-radius: 20px; padding: 5px 15px 5px 32px; border: 1px solid #ccc;">
+              <ul id="searchSuggestions" class="dropdown-menu shadow"
+                style="display: none; position: absolute; top: 100%; left: 0; width: 100%; margin-top: 5px; border-radius: 8px; max-height: 300px; overflow-y: auto;">
+              </ul>
+            </li>
+            <li class="nav-id">
+              <a href="index.html" class="nav-link text-white"><i class="fa fa-home"></i>Home</a>
+            </li>
+            <li class="nav-id">
+              <a href="progress-status.html" class="nav-link text-white"><i class="fa fa-rocket"></i> Tiến độ</a>
+            </li>
+            <div class="profile">
+              <button type="button" id="profile-dropdown" class="dropdown-toggle btn btn-outline-light"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-user"></i>
                 Tài khoản</button>
-                <ul id="author-menu" class="dropdown-menu"
-                 aria-labelledby="profile-dropdown">
-                 <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
-                 <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
-                </ul>
-              </div>
-            </ul>
+              <ul id="author-menu" class="dropdown-menu" aria-labelledby="profile-dropdown">
+                <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
+                <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </header>
+
+      <!-- Hero Banner -->
+      <div class="hero-banner text-center d-flex justify-content-center" style="margin: 100px 30px 40px 30px;">
+        <img src="./img/hero-banner.jpg" alt="Học tiếng Anh qua Flashcard"
+          style="width: 75%; max-width: 1000px; display: block;">
+      </div>
+
+      <h2 class="text-center mb-5 mt-5 fw-bold"
+        style="color: #4b8cdb; text-transform: uppercase; font-size: 28px; letter-spacing: 0.5px;">Flashcard học từ vựng
+        tiếng Anh hiệu quả, nhớ lâu</h2>
+
+      <p id="d" class="text-center text-muted fw-medium"></p>
+      <div id="home-view" class="container mt-4 mb-5">
+        <div class="topic-grid">
+          <div class="topic-card" onclick="showTopic('body')">
+            <div class="topic-card-img" style="background-color: #ffe0e0;">
+              <i class="fa fa-child" style="font-size: 70px; color: #ff6b6b;"></i>
+            </div>
+            <div class="topic-card-title">Cơ thể người (Body)</div>
           </div>
-        </header>
+          <div class="topic-card" onclick="showTopic('professional')">
+            <div class="topic-card-img" style="background-color: #e3f2fd;">
+              <i class="fa fa-user-tie" style="font-size: 70px; color: #4dabf7;"></i>
+            </div>
+            <div class="topic-card-title">Nghề nghiệp (Professional)</div>
+          </div>
+          <div class="topic-card" onclick="showTopic('learning')">
+            <div class="topic-card-img" style="background-color: #fff3cd;">
+              <i class="fa fa-book-open" style="font-size: 70px; color: #fcc419;"></i>
+            </div>
+            <div class="topic-card-title">Học tập (Learning)</div>
+          </div>
+          <div class="topic-card" onclick="showTopic('sport')">
+            <div class="topic-card-img" style="background-color: #e8f5e9;">
+              <i class="fa fa-basketball-ball" style="font-size: 70px; color: #51cf66;"></i>
+            </div>
+            <div class="topic-card-title">Thể thao (Sport)</div>
+          </div>
+          <div class="topic-card" onclick="showTopic('computer')">
+            <div class="topic-card-img" style="background-color: #f3f0ff;">
+              <i class="fa fa-laptop-code" style="font-size: 70px; color: #845ef7;"></i>
+            </div>
+            <div class="topic-card-title">Máy tính (Computer)</div>
+          </div>
+        </div>
+      </div>
 
-      <div class="banner-text" text-start ps-5>
-        <h1 class="title text-black">Học Từ Vựng Tiếng Anh</h1>
-        <p class="intro">
-    Phương pháp <B>lặp lại ngắt quãng</B> giúp bạn ghi nhớ từ vựng lâu hơn bằng cách ôn tập lại từ theo các khoảng thời gian được tính toán hợp lý.
-    Hãy đánh dấu các từ bạn đã nhớ hoặc cần ôn lại để tối ưu hóa việc học!
-  </p>
-      </div>
-     
-  <p id="d"></p>
-  <div class="bar">
-    <ul>
-        <li class="bar-id"><a href="#body">Body</a></li>
-        <li class="bar-id"><a href="#professional">Professional</a></li>
-        <li class="bar-id"><a href="#learning">Learning</a></li>
-        <li class="bar-id"><a href="#sport">Sport</a></li>
-        <li class="bar-id"><a href="#computer">Computer</a></li>
-      </ul>
-  </div>
-  <section id="body">
-  <fieldset>
-    <div>Cơ thể người<br>Body</div>
-  </fieldset>
-   <div class="progress" id="progress-body">Tiến độ: 0%</div>
-  <ol>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">head <button onclick="speakWord('head')">🔊</button></div>        
-          <div class="meaning">đầu</div>
-          <div class="example">She has a round head.<button onclick="speakWord('She has a round head')">🔊</button></div>
-          <span class="button-group">
-             <button class="btn-remember" data-section="body">Đã nhớ</button>
-             <button class="btn-review" data-section="body">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">eye <button onclick="speakWord('eye')">🔊</button></div>        
-          <div class="meaning">mắt</div>
-          <div class="example"><em>He closed his eyes to sleep.</em><button onclick="speakWord('He closed his eyes to sleep')">🔊</button></div>          
-          <span class="button-group">
-             <button class="btn-remember" data-section="body">Đã nhớ</button>
-             <button class="btn-review" data-section="body">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">mouth <button onclick="speakWord('mouth')">🔊</button></div>  
-          <div class="meaning">miệng</div>
-          <div class="example"><em>Open your mouth, please.</em> <button onclick="speakWord('Open your mouth,please')">🔊</button></div> 
-          <span class="button-group">
-             <button class="btn-remember" data-section="body">Đã nhớ</button>
-             <button class="btn-review" data-section="body">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">face <button onclick="speakWord('face')">🔊</button></div>           
-          <div class="meaning">khuôn mặt</div>
-          <div class="example"><em>She has an oval face.</em><button onclick="speakWord('She has an oval face')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="body">Đã nhớ</button>
-             <button class="btn-review" data-section="body">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">stomach <button onclick="speakWord('stomach')">🔊</button></div>          
-          <div class="meaning">bụng</div>
-          <div class="example"><em>He has a pain in his stomach.</em><button onclick="speakWord('He has a pain in his stomach')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="body">Đã nhớ</button>
-             <button class="btn-review" data-section="body">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-  </ol>
-  
-</section>
-<section id="professional">
-  <fieldset>
-    <div>Nghề nghiệp<br>Professional</div>
-  </fieldset>
-  <div class="progress" id="progress-professional">Tiến độ: 0%</div>
-  <ol>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">teacher <button onclick="speakWord('teacher')">🔊</button></div>
-          <div class="meaning">giáo viên</div>         
-          <div class="example"><em>The teacher is explaining the lesson.</em><button onclick="speakWord('The teacher is explaining the lesson')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="professional">Đã nhớ</button>
-             <button class="btn-review" data-section="professional">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">doctor <button onclick="speakWord('doctor')">🔊</button></div>         
-          <div class="meaning">bác sĩ</div>
-          <div class="example"><em>My father is a dedicated doctor at the city hospital.</em><button onclick="speakWord('My father is a dedicated doctor at the city hospital.')">🔊</button></div>       
-          <span class="button-group">
-             <button class="btn-remember" data-section="professional">Đã nhớ</button>
-             <button class="btn-review" data-section="professional">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">police <button onclick="speakWord('police')">🔊</button></div>          
-          <div class="meaning">công an</div>
-          <div class="example"><em>The police officer directed the traffic</em><button onclick="speakWord('The police officer directed the traffic')">🔊</button></div>        
-          <span class="button-group">
-             <button class="btn-remember" data-section="professional">Đã nhớ</button>
-             <button class="btn-review" data-section="professional">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">worker <button onclick="speakWord('worker')">🔊</button></div>          
-          <div class="meaning">công nhân</div>
-          <div class="example"><em>The factory employs more than 500 workers</em><button onclick="speakWord('The factory employs more than 500 workers')">🔊</button></div>        
-          <span class="button-group">
-             <button class="btn-remember" data-section="professional">Đã nhớ</button>
-             <button class="btn-review" data-section="professional">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">driver <button onclick="speakWord('driver')">🔊</button></div>         
-          <div class="meaning">tài xế</div>
-          <div class="example"><em>The driver stopped the car at the red light.</em><button onclick="speakWord('The driver stopped the car at the red light')">🔊</button></div>          
-          <span class="button-group">
-             <button class="btn-remember" data-section="professional">Đã nhớ</button>
-             <button class="btn-review" data-section="professional">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-  </ol>
-</section>
-<section id="learning">
-  <fieldset>
-    <div>Học tập<br>Learning</div>
-  </fieldset>
-  <div class="progress" id="progress-learning">Tiến độ: 0%</div>
-  <ol>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">study <button onclick="speakWord('study')">🔊</button></div>          
-          <div class="meaning">học</div>
-          <div class="example"><em>Students study every year</em><button onclick="speakWord('Students study every year')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="learning">Đã nhớ</button>
-             <button class="btn-review" data-section="learning">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">comment <button onclick="speakWord('comment')">🔊</button></div>         
-          <div class="meaning">bình luận chú thích</div>
-          <div class="example"><em>I don't want any comments on my new haircut, thank you!.</em><button onclick="speakWord('I dont want any comments on my new haircut, thank you!.')">🔊</button></div>
-          <span class="button-group">
-             <button class="btn-remember" data-section="learning">Đã nhớ</button>
-             <button class="btn-review" data-section="learning">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">train <button onclick="speakWord('train')">🔊</button></div>         
-          <div class="meaning">đào tạo</div>
-          <div class="example"><em>teacher trains skillfull for pupil in the class every lessons </em><button onclick="speakWord('teacher trains skillfull for pupil in the class every lessons')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="learning">Đã nhớ</button>
-             <button class="btn-review" data-section="learning">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">copy <button onclick="speakWord('copy')">🔊</button></div>         
-          <div class="meaning">ghi chép</div>
-          <div class="example"><em>They copy the questions from teacher. </em> <button onclick="speakWord('Then copy the questions from teacher')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="learning">Đã nhớ</button>
-             <button class="btn-review" data-section="learning">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">read <button onclick="speakWord('read')">🔊</button></div>         
-          <div class="meaning">đọc</div>
-          <div class="example"><em>She reads book everyday. </em><button onclick="speakWord('She reads book everyday')">🔊</button></div>          
-          <span class="button-group">
-             <button class="btn-remember" data-section="learning">Đã nhớ</button>
-             <button class="btn-review" data-section="learning">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-  </ol>
-</section>
-<section id="sport">
-  <fieldset>
-    <div>Thể thao<br>Sport</div>
-  </fieldset>
-   <div class="progress" id="progress-sport">Tiến độ: 0%</div>
-   <ol>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">athletics <button onclick="speakWord('athletics')">🔊</button></div>          
-          <div class="meaning">điền kinh</div>
-          <div class="example"><em>Athletics is a very popular sport at our school. 
-</em><button onclick="speakWord('Athletics is a very popular sport at our school')">🔊</button></div>
-<span class="button-group">
-             <button class="btn-remember" data-section="sport">Đã nhớ</button>
-             <button class="btn-review" data-section="sport">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">championship <button onclick="speakWord('championship')">🔊</button></div>         
-          <div class="meaning">giải quán quân</div>
-          <div class="example"><em>The team is training hard for the national championship. 
-</em><button onclick="speakWord('The team is training hard for the national championship')">🔊</button></div>
-        <span class="button-group">
-             <button class="btn-remember" data-section="sport">Đã nhớ</button>
-             <button class="btn-review" data-section="sport">Ôn lại</button>
-          </span>
-</div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">semi-final <button onclick="speakWord('semi-final')">🔊</button></div>          
-          <div class="meaning">vòng bán kết</div>
-          <div class="example"><em>She made it to the semi-final but didn't advance to the championship. 
-</em><button onclick="speakWord('She made it to the semi-final but did not advance to the championship.')">🔊</button>
-</div>
-<span class="button-group">
-             <button class="btn-remember" data-section="sport">Đã nhớ</button>
-             <button class="btn-review" data-section="sport">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">gold-medal <button onclick="speakWord('gold-medal')">🔊</button></div>          
-          <div class="meaning">Huy chương vàng</div>
-          <div class="example"><em>He hopes to win a gold medal at the Olympic Games. 
-</em><button onclick="speakWord('He hope to win a gold medal at the Olympic Games')">🔊</button></div>          
-        <span class="button-group">
-             <button class="btn-remember" data-section="sport">Đã nhớ</button>
-             <button class="btn-review" data-section="sport">Ôn lại</button>
-          </span>
-</div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">contest <button onclick="speakWord('contest')">🔊</button></div>          
-          <div class="meaning">cuộc thi đấu</div>
-          <div class="example"><em>There will be a singing contest next week. 
-.</em><button onclick="speakWord('There will be a singing contest next week')">🔊</button></div>         
-        <span class="button-group">
-             <button class="btn-remember" data-section="sport">Đã nhớ</button>
-             <button class="btn-review" data-section="sport">Ôn lại</button>
-          </span>
-</div>
-      </div>
-    </li>
-  </ol>
-</section>
-<section id="computer">
-  <fieldset>
-    <div>Máy tính<br>Computer</div>
-  </fieldset>
-   <div class="progress" id="progress-computer">Tiến độ: 0%</div>
-  <ol>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">keyboard <button onclick="speakWord('keyboard')">🔊</button></div>         
-          <div class="meaning">bàn phím</div>
-          <div class="example"><em>This keyboard is black. </em><button onclick="speakWord('This keyboard is black')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="computer">Đã nhớ</button>
-             <button class="btn-review" data-section="computer">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">compiler <button onclick="speakWord('compiler')">🔊</button></div>          
-          <div class="meaning">bộ biên dịch</div>
-          <div class="example"><em>The compiler translates the human-readable source code into machine code that the computer can understand </em><button onclick="speakWord('The compiler translates the human-readable source code into machine code that the computer can understand')">🔊</button></div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="computer">Đã nhớ</button>
-             <button class="btn-review" data-section="computer">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">decoder <button onclick="speakWord('decoder')">🔊</button></div>         
-          <div class="meaning">bộ giải mã</div>
-          <div class="example"><em>In cryptography, a decoder is essential for deciphering encrypted messages. <button onclick="speakWord('In cryptography, a decoder is essential for deciphering encrypted messages.')">🔊</button></em></div>
-          <span class="button-group">
-             <button class="btn-remember" data-section="computer">Đã nhớ</button>
-             <button class="btn-review" data-section="computer">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">flowchart <button onclick="speakWord('flowchart')">🔊</button></div>          
-          <div class="meaning">lưu đồ</div>
-          <div class="example"><em>A clear flowchart can help identify potential bottlenecks in a process. 
-.</em><button onclick="speakWord('>A clear flowchart can help identify potential bottlenecks in a process.')">🔊</button></div>
-          <span class="button-group">
-             <button class="btn-remember" data-section="computer">Đã nhớ</button>
-             <button class="btn-review" data-section="computer">Ôn lại</button>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="flashcard-container">
-        <div class="flashcard">
-          <div class="word">data <button onclick="speakWord('data')">🔊</button></div>          
-          <div class="meaning">dữ liệu</div>
-          <div class="example">Before making a decision, it's important to look at the available data. <button onclick="speakWord('Before making a decision, it has important to look at the available data.')">🔊</button>
-</div>         
-          <span class="button-group">
-             <button class="btn-remember" data-section="computer">Đã nhớ</button>
-             <button class="btn-review" data-section="computer">Ôn lại</button>
-          </span>
-          
-        </div>
-      </div>
-    </li>
-  </ol>
-  <div class="banquyen">No CoppyRight</div>
-       </div>
-    </div>
-    <script type="module" src="./firebase/index.js"></script>
+      <div id="flashcard-view" style="display: none;" class="container mt-4 mb-5">
+        <button class="btn btn-outline-primary mb-4 fw-bold" onclick="showHome()"><i class="fa fa-arrow-left"></i> Quay
+          lại chủ đề</button>
+        <section id="body">
+          <fieldset>
+            <div>Cơ thể người<br>Body</div>
+          </fieldset>
+          <div class="progress" id="progress-body">Tiến độ: 0%</div>
+          <ol>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">head <button onclick="speakWord('head')">🔊</button></div>
+                  <div class="meaning">đầu</div>
+                  <div class="example">She has a round head.<button
+                      onclick="speakWord('She has a round head')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">eye <button onclick="speakWord('eye')">🔊</button></div>
+                  <div class="meaning">mắt</div>
+                  <div class="example"><em>He closed his eyes to sleep.</em><button
+                      onclick="speakWord('He closed his eyes to sleep')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">mouth <button onclick="speakWord('mouth')">🔊</button></div>
+                  <div class="meaning">miệng</div>
+                  <div class="example"><em>Open your mouth, please.</em> <button
+                      onclick="speakWord('Open your mouth,please')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">face <button onclick="speakWord('face')">🔊</button></div>
+                  <div class="meaning">khuôn mặt</div>
+                  <div class="example"><em>She has an oval face.</em><button
+                      onclick="speakWord('She has an oval face')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">stomach <button onclick="speakWord('stomach')">🔊</button></div>
+                  <div class="meaning">bụng</div>
+                  <div class="example"><em>He has a pain in his stomach.</em><button
+                      onclick="speakWord('He has a pain in his stomach')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">hand <button onclick="speakWord('hand')">🔊</button></div>
+                  <div class="meaning">bàn tay</div>
+                  <div class="example"><em>Wash your hands before eating.</em><button
+                      onclick="speakWord('Wash your hands before eating')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">leg <button onclick="speakWord('leg')">🔊</button></div>
+                  <div class="meaning">cẳng chân</div>
+                  <div class="example"><em>He broke his leg while skiing.</em><button
+                      onclick="speakWord('He broke his leg while skiing')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">foot <button onclick="speakWord('foot')">🔊</button></div>
+                  <div class="meaning">bàn chân</div>
+                  <div class="example"><em>My left foot hurts.</em><button
+                      onclick="speakWord('My left foot hurts')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">arm <button onclick="speakWord('arm')">🔊</button></div>
+                  <div class="meaning">cánh tay</div>
+                  <div class="example"><em>She held the baby in her arms.</em><button
+                      onclick="speakWord('She held the baby in her arms')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">nose <button onclick="speakWord('nose')">🔊</button></div>
+                  <div class="meaning">cái mũi</div>
+                  <div class="example"><em>He has a runny nose.</em><button
+                      onclick="speakWord('He has a runny nose')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="body">Đã nhớ</button>
+                    <button class="btn-review" data-section="body">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ol>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        </section>
+        <section id="professional">
+          <fieldset>
+            <div>Nghề nghiệp<br>Professional</div>
+          </fieldset>
+          <div class="progress" id="progress-professional">Tiến độ: 0%</div>
+          <ol>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">teacher <button onclick="speakWord('teacher')">🔊</button></div>
+                  <div class="meaning">giáo viên</div>
+                  <div class="example"><em>The teacher is explaining the lesson.</em><button
+                      onclick="speakWord('The teacher is explaining the lesson')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">doctor <button onclick="speakWord('doctor')">🔊</button></div>
+                  <div class="meaning">bác sĩ</div>
+                  <div class="example"><em>My father is a dedicated doctor at the city hospital.</em><button
+                      onclick="speakWord('My father is a dedicated doctor at the city hospital.')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">police <button onclick="speakWord('police')">🔊</button></div>
+                  <div class="meaning">công an</div>
+                  <div class="example"><em>The police officer directed the traffic</em><button
+                      onclick="speakWord('The police officer directed the traffic')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">worker <button onclick="speakWord('worker')">🔊</button></div>
+                  <div class="meaning">công nhân</div>
+                  <div class="example"><em>The factory employs more than 500 workers</em><button
+                      onclick="speakWord('The factory employs more than 500 workers')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">driver <button onclick="speakWord('driver')">🔊</button></div>
+                  <div class="meaning">tài xế</div>
+                  <div class="example"><em>The driver stopped the car at the red light.</em><button
+                      onclick="speakWord('The driver stopped the car at the red light')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">engineer <button onclick="speakWord('engineer')">🔊</button></div>
+                  <div class="meaning">kỹ sư</div>
+                  <div class="example"><em>The engineer designed the bridge.</em><button
+                      onclick="speakWord('The engineer designed the bridge')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">nurse <button onclick="speakWord('nurse')">🔊</button></div>
+                  <div class="meaning">y tá</div>
+                  <div class="example"><em>The nurse gave me medicine.</em><button
+                      onclick="speakWord('The nurse gave me medicine')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">actor <button onclick="speakWord('actor')">🔊</button></div>
+                  <div class="meaning">diễn viên</div>
+                  <div class="example"><em>He is a famous actor.</em><button
+                      onclick="speakWord('He is a famous actor')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">pilot <button onclick="speakWord('pilot')">🔊</button></div>
+                  <div class="meaning">phi công</div>
+                  <div class="example"><em>The pilot flew the plane.</em><button
+                      onclick="speakWord('The pilot flew the plane')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">chef <button onclick="speakWord('chef')">🔊</button></div>
+                  <div class="meaning">đầu bếp</div>
+                  <div class="example"><em>The chef cooked a delicious meal.</em><button
+                      onclick="speakWord('The chef cooked a delicious meal')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="professional">Đã nhớ</button>
+                    <button class="btn-review" data-section="professional">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+        <section id="learning">
+          <fieldset>
+            <div>Học tập<br>Learning</div>
+          </fieldset>
+          <div class="progress" id="progress-learning">Tiến độ: 0%</div>
+          <ol>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">study <button onclick="speakWord('study')">🔊</button></div>
+                  <div class="meaning">học</div>
+                  <div class="example"><em>Students study every year</em><button
+                      onclick="speakWord('Students study every year')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">comment <button onclick="speakWord('comment')">🔊</button></div>
+                  <div class="meaning">bình luận chú thích</div>
+                  <div class="example"><em>I don't want any comments on my new haircut, thank you!.</em><button
+                      onclick="speakWord('I dont want any comments on my new haircut, thank you!.')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">train <button onclick="speakWord('train')">🔊</button></div>
+                  <div class="meaning">đào tạo</div>
+                  <div class="example"><em>teacher trains skillfull for pupil in the class every lessons </em><button
+                      onclick="speakWord('teacher trains skillfull for pupil in the class every lessons')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">copy <button onclick="speakWord('copy')">🔊</button></div>
+                  <div class="meaning">ghi chép</div>
+                  <div class="example"><em>They copy the questions from teacher. </em> <button
+                      onclick="speakWord('Then copy the questions from teacher')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">read <button onclick="speakWord('read')">🔊</button></div>
+                  <div class="meaning">đọc</div>
+                  <div class="example"><em>She reads book everyday. </em><button
+                      onclick="speakWord('She reads book everyday')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">write <button onclick="speakWord('write')">🔊</button></div>
+                  <div class="meaning">viết</div>
+                  <div class="example"><em>Write your name here.</em><button
+                      onclick="speakWord('Write your name here')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">listen <button onclick="speakWord('listen')">🔊</button></div>
+                  <div class="meaning">nghe</div>
+                  <div class="example"><em>Listen to the teacher.</em><button
+                      onclick="speakWord('Listen to the teacher')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">speak <button onclick="speakWord('speak')">🔊</button></div>
+                  <div class="meaning">nói</div>
+                  <div class="example"><em>Speak English every day.</em><button
+                      onclick="speakWord('Speak English every day')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">practice <button onclick="speakWord('practice')">🔊</button></div>
+                  <div class="meaning">thực hành</div>
+                  <div class="example"><em>Practice makes perfect.</em><button
+                      onclick="speakWord('Practice makes perfect')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">homework <button onclick="speakWord('homework')">🔊</button></div>
+                  <div class="meaning">bài tập về nhà</div>
+                  <div class="example"><em>I have a lot of homework.</em><button
+                      onclick="speakWord('I have a lot of homework')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="learning">Đã nhớ</button>
+                    <button class="btn-review" data-section="learning">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+        <section id="sport">
+          <fieldset>
+            <div>Thể thao<br>Sport</div>
+          </fieldset>
+          <div class="progress" id="progress-sport">Tiến độ: 0%</div>
+          <ol>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">athletics <button onclick="speakWord('athletics')">🔊</button></div>
+                  <div class="meaning">điền kinh</div>
+                  <div class="example"><em>Athletics is a very popular sport at our school.
+                    </em><button onclick="speakWord('Athletics is a very popular sport at our school')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">championship <button onclick="speakWord('championship')">🔊</button></div>
+                  <div class="meaning">giải quán quân</div>
+                  <div class="example"><em>The team is training hard for the national championship.
+                    </em><button
+                      onclick="speakWord('The team is training hard for the national championship')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">semi-final <button onclick="speakWord('semi-final')">🔊</button></div>
+                  <div class="meaning">vòng bán kết</div>
+                  <div class="example"><em>She made it to the semi-final but didn't advance to the championship.
+                    </em><button
+                      onclick="speakWord('She made it to the semi-final but did not advance to the championship.')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">gold-medal <button onclick="speakWord('gold-medal')">🔊</button></div>
+                  <div class="meaning">Huy chương vàng</div>
+                  <div class="example"><em>He hopes to win a gold medal at the Olympic Games.
+                    </em><button onclick="speakWord('He hope to win a gold medal at the Olympic Games')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">contest <button onclick="speakWord('contest')">🔊</button></div>
+                  <div class="meaning">cuộc thi đấu</div>
+                  <div class="example"><em>There will be a singing contest next week.
+                      .</em><button onclick="speakWord('There will be a singing contest next week')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">football <button onclick="speakWord('football')">🔊</button></div>
+                  <div class="meaning">bóng đá</div>
+                  <div class="example"><em>I love playing football.</em><button
+                      onclick="speakWord('I love playing football')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">swimmer <button onclick="speakWord('swimmer')">🔊</button></div>
+                  <div class="meaning">vận động viên bơi</div>
+                  <div class="example"><em>He is a fast swimmer.</em><button
+                      onclick="speakWord('He is a fast swimmer')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">tennis <button onclick="speakWord('tennis')">🔊</button></div>
+                  <div class="meaning">quần vợt</div>
+                  <div class="example"><em>Let's play tennis.</em><button
+                      onclick="speakWord('Lets play tennis')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">stadium <button onclick="speakWord('stadium')">🔊</button></div>
+                  <div class="meaning">sân vận động</div>
+                  <div class="example"><em>The stadium is full.</em><button
+                      onclick="speakWord('The stadium is full')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">coach <button onclick="speakWord('coach')">🔊</button></div>
+                  <div class="meaning">huấn luyện viên</div>
+                  <div class="example"><em>The coach trained the team.</em><button
+                      onclick="speakWord('The coach trained the team')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="sport">Đã nhớ</button>
+                    <button class="btn-review" data-section="sport">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+        <section id="computer">
+          <fieldset>
+            <div>Máy tính<br>Computer</div>
+          </fieldset>
+          <div class="progress" id="progress-computer">Tiến độ: 0%</div>
+          <ol>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">keyboard <button onclick="speakWord('keyboard')">🔊</button></div>
+                  <div class="meaning">bàn phím</div>
+                  <div class="example"><em>This keyboard is black. </em><button
+                      onclick="speakWord('This keyboard is black')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">compiler <button onclick="speakWord('compiler')">🔊</button></div>
+                  <div class="meaning">bộ biên dịch</div>
+                  <div class="example"><em>The compiler translates the human-readable source code into machine code that
+                      the computer can understand </em><button
+                      onclick="speakWord('The compiler translates the human-readable source code into machine code that the computer can understand')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">decoder <button onclick="speakWord('decoder')">🔊</button></div>
+                  <div class="meaning">bộ giải mã</div>
+                  <div class="example"><em>In cryptography, a decoder is essential for deciphering encrypted messages.
+                      <button
+                        onclick="speakWord('In cryptography, a decoder is essential for deciphering encrypted messages.')">🔊</button></em>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">flowchart <button onclick="speakWord('flowchart')">🔊</button></div>
+                  <div class="meaning">lưu đồ</div>
+                  <div class="example"><em>A clear flowchart can help identify potential bottlenecks in a process.
+                      .</em><button
+                      onclick="speakWord('>A clear flowchart can help identify potential bottlenecks in a process.')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">data <button onclick="speakWord('data')">🔊</button></div>
+                  <div class="meaning">dữ liệu</div>
+                  <div class="example">Before making a decision, it's important to look at the available data. <button
+                      onclick="speakWord('Before making a decision, it has important to look at the available data.')">🔊</button>
+                  </div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">mouse <button onclick="speakWord('mouse')">🔊</button></div>
+                  <div class="meaning">chuột máy tính</div>
+                  <div class="example"><em>Click the mouse.</em><button
+                      onclick="speakWord('Click the mouse')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">screen <button onclick="speakWord('screen')">🔊</button></div>
+                  <div class="meaning">màn hình</div>
+                  <div class="example"><em>Look at the screen.</em><button
+                      onclick="speakWord('Look at the screen')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">hardware <button onclick="speakWord('hardware')">🔊</button></div>
+                  <div class="meaning">phần cứng</div>
+                  <div class="example"><em>Computer hardware includes the monitor and keyboard.</em><button
+                      onclick="speakWord('Computer hardware includes the monitor and keyboard')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">software <button onclick="speakWord('software')">🔊</button></div>
+                  <div class="meaning">phần mềm</div>
+                  <div class="example"><em>You need to install the software.</em><button
+                      onclick="speakWord('You need to install the software')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flashcard-container">
+                <div class="flashcard">
+                  <div class="word">network <button onclick="speakWord('network')">🔊</button></div>
+                  <div class="meaning">mạng máy tính</div>
+                  <div class="example"><em>Connect to the network.</em><button
+                      onclick="speakWord('Connect to the network')">🔊</button></div>
+                  <span class="button-group">
+                    <button class="btn-remember" data-section="computer">Đã nhớ</button>
+                    <button class="btn-review" data-section="computer">Ôn lại</button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ol>
+      </div> <!-- End flashcard-view -->
+
+    </div> <!-- End banner-group -->
+  </div> <!-- End page-wrapper -->
+
+  <!-- App Footer -->
+  <footer class="app-footer text-white py-5" style="background-color: #001a33; border-top: 5px solid #1D5D9B;">
+    <div class="container-fluid px-5">
+      <div class="row">
+        <!-- Col 1: Logo & Company Info -->
+        <div class="col-lg-4 mb-4">
+          <div class="mb-4">
+            <img src="./img/logo.png" alt="logo"
+              style="max-height: 40px; background-color: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px;">
+          </div>
+          <p class="fw-bold mb-3 fs-6">Trường đại học mở Hà Nội</p>
+          <div class="mb-3" style="font-size: 14px; opacity: 0.9;">
+
+          </div>
+        </div>
+
+        <!-- Col 2: Classes -->
+        <div class="col-lg-6 mb-4">
+          <h5 class="fw-bold mb-4 text-uppercase fs-6">Lớp học</h5>
+          <div class="row" style="font-size: 14px;">
+            <div class="col-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 1</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 2</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 3</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 4</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 5</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 6</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 7</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 8</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 9</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 10</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 11</a>
+                </li>
+                <li class="mb-2"><a href="#" class="text-white text-decoration-none" style="opacity: 0.8;">Lớp 12</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3: Contact Info -->
+
+  </footer>
+
+  <script type="module" src="./firebase/index.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
 </html>
