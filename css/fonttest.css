@@ -1,102 +1,501 @@
-html {
-  scroll-behavior: smooth;
-}
+/* =============================================
+   FONTTEST.CSS — Premium Light Theme Test Design
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ---- RESET & BASE ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  margin: 0;
-  padding: 20px;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+  min-height: 100vh;
+  color: #1e293b;
+  padding: 0 0 60px;
 }
 
+/* ---- TOP HEADER BAR ---- */
+.test-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* ---- PAGE TITLE (h1) ---- */
 h1 {
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 30px;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 40px auto 10px;
+  padding: 0 20px;
 }
-h2 {
-  color: #34495e;
-  margin-top: 20px;
-  font-size: 1.5rem;
+
+/* ---- TIMER ---- */
+#timer-box {
+  background: rgba(79, 70, 229, 0.05);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 12px;
+  padding: 8px 20px;
   text-align: center;
+  color: #4f46e5;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 12px auto;
+  max-width: 220px;
+  letter-spacing: 0.5px;
 }
+
+#timer-box span {
+  font-size: 22px;
+  font-weight: 800;
+  color: #3b82f6;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Old inline timer display (kept for compatibility) */
+div > #h, div > #m, div > #s {
+  font-size: 22px;
+  font-weight: 800;
+  color: #4f46e5;
+}
+
+/* Timer wrapper */
+body > div:first-of-type {
+  margin: 20px auto;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ---- SECTION CARDS (fieldset) ---- */
 fieldset {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 25px;
-  background-color: #fff;
-  max-width: 700px;
+  border: 1px solid rgba(226, 232, 240, 1);
+  border-radius: 20px;
+  padding: 32px 36px;
+  background: white;
+  max-width: 760px;
   margin: 30px auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+fieldset:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 legend {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #2c3e50;
-  margin-bottom: 10px;
-  text-align: center;
+  font-weight: 700;
+  color: #4f46e5;
+  padding: 6px 18px;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  border-radius: 30px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.82rem;
 }
 
+/* ---- SECTION HEADINGS (h2) ---- */
+h2 {
+  color: #334155;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  letter-spacing: 0.2px;
+}
+
+/* ---- QUESTION LIST ---- */
 ol {
-  padding-left: 20px;
-  text-align: left;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: question-counter;
 }
 
 li {
-  margin-bottom: 25px;
-  line-height: 1.6;
-  font-size: 18px;
+  margin-bottom: 28px;
+  padding: 20px 22px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  counter-increment: question-counter;
+  position: relative;
 }
 
+li:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* Question numbering */
+li::before {
+  content: counter(question-counter);
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 24px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+/* ---- QUESTION TEXT ---- */
+li > p.questions, li > p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* Fill-in-blank question label (when it's direct text in li) */
+li > *:not(label):not(input):not(p):first-child,
+li > br {
+  display: none;
+}
+
+/* ---- RADIO LABELS ---- */
 label {
-  display: block;
-  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin: 5px 0;
   cursor: pointer;
-  transition: color 0.3s ease;
-  font-size: 18px;
+  border-radius: 10px;
+  font-size: 0.97rem;
+  color: #475569;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 label:hover {
-  color: #4CAF50;
+  background: white;
+  border-color: #e2e8f0;
+  color: #1e293b;
 }
 
 input[type="radio"] {
-  margin-right: 10px;
-  transform: scale(1.1);
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
 }
 
+input[type="radio"]:checked {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* ---- TEXT INPUTS (Fill-in-blank) ---- */
 input[type="text"] {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  width: 80%;
-  margin-top: 4px;
-  transition: border-color 0.3s ease;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  background: white;
+  color: #0f172a;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  width: calc(100% - 10px);
+  margin-top: 8px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.2px;
+}
+
+input[type="text"]::placeholder {
+  color: #94a3b8;
+  font-style: italic;
 }
 
 input[type="text"]:focus {
-  border-color: #4CAF50;
+  border-color: #4f46e5;
+  background: #f8fafc;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* Fill-in label text (the Vietnamese word) */
+li:has(input[type="text"]) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+li:has(input[type="text"])::before {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---- GENERAL BUTTONS ---- */
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
   outline: none;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* Submit button */
+#btn-submit {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 40px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  margin: 10px auto !important;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+  letter-spacing: 0.3px;
+  text-transform: none;
 }
 
-button:hover {
-  background-color: #45a049;
+#btn-submit:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4) !important;
+}
+
+#btn-submit:active {
+  transform: translateY(0) !important;
+}
+
+/* Home button */
+button[onclick*="index.html"]:not(#btn-review):not(#btn-upgrade) {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  background: white !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  margin: 8px auto !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02) !important;
+}
+
+button[onclick*="index.html"]:not(#btn-review):not(#btn-upgrade):hover {
+  background: #f8fafc !important;
+  border-color: #94a3b8 !important;
+  color: #1e293b !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+}
+
+/* ---- BUTTON WRAPPER ---- */
+div[style*="text-align: center"] {
+  text-align: center;
+}
+
+/* ---- RESULT STATES (after grading) ---- */
+.correct, label[style*="green"] {
+  color: #16a34a !important;
+  font-weight: 600;
+}
+
+.incorrect, label[style*="red"] {
+  color: #dc2626 !important;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+input[style*="border: 2px solid green"] {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.05) !important;
+  color: #16a34a !important;
+}
+
+input[style*="border: 2px solid red"] {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+  color: #dc2626 !important;
+}
+
+/* ---- MODAL OVERLAY ---- */
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(5px) !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+}
+
+.modal-content {
+  background: white !important;
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 40px 36px !important;
+  text-align: center !important;
+  width: 420px !important;
+  max-width: 92vw !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes modalPopIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* Modal title */
+.modal-content h2, #modal-title {
+  color: #0f172a !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 12px !important;
+  background: none !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+/* Score text */
+#score-text {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #4f46e5 !important;
+  margin: 16px 0 8px !important;
+  line-height: 1.2 !important;
+}
+
+#score-text strong {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.2rem;
+}
+
+/* Modal message */
+#modal-message {
+  font-size: 1rem !important;
+  color: #475569 !important;
+  line-height: 1.6 !important;
+  margin: 8px 0 24px !important;
+}
+
+/* ---- MODAL BUTTONS ---- */
+.btn-next {
+  /* Removed display: inline-flex !important; to let JS toggle display: none / inline-block correctly */
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  letter-spacing: 0.2px;
+  margin-top: 0 !important;
+}
+
+/* Upgrade button (green gradient) */
+#btn-upgrade {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25) !important;
+}
+
+#btn-upgrade:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35) !important;
+}
+
+/* Review button (orange gradient) */
+#btn-review {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.25) !important;
+}
+
+#btn-review:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35) !important;
+}
+
+/* Home button inside modal (grey/white) */
+.btn-next[style*="#6c757d"], .btn-next[style*="6c757d"] {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+.btn-next[style*="#6c757d"]:hover, .btn-next[style*="6c757d"]:hover {
+  background: #e2e8f0 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+  fieldset { padding: 22px 18px; margin: 20px 14px; }
+  h1 { font-size: 1.5rem; }
+  .modal-content { padding: 28px 20px !important; }
+  #score-text { font-size: 1.6rem !important; }
+  li { padding: 16px 14px; }
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/fonttest.css">
     <script src="./js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <h1>📝 Bài kiểm tra: Cơ thể người</h1>
@@ -19,64 +20,105 @@
 
     <form id="test-form">
         <fieldset>
-            <legend>Experience</legend>
-            <h2>Choose the correct option</h2>
+            <legend>Cơ Thể Người (Nâng Cao)</legend>
+            <h2>BÀI TẬP TRẮC NGHIỆM (NÂNG CAO)</h2>
             <ol>
                 <li>
-                    head có nghĩa là ?<br>
-                    <label><input name="answer1" type="radio" value="A"> mắt</label>
-                    <label><input name="answer1" type="radio" value="B"> đầu</label>
-                    <label><input name="answer1" type="radio" value="C"> tai</label>
-                    <label><input name="answer1" type="radio" value="D"> tay</label>
+                    Which organ is primarily responsible for filtering blood and producing urine?<br>
+                    <label><input name="answer1" type="radio" value="A"> Heart</label>
+                    <label><input name="answer1" type="radio" value="B"> Liver</label>
+                    <label><input name="answer1" type="radio" value="C"> Kidney</label>
+                    <label><input name="answer1" type="radio" value="D"> Stomach</label>
                 </li>
                 <br>
                 <li>
-                    eye có nghĩa là gì ?<br>
-                    <label><input name="answer2" type="radio" value="A"> mắt</label>
-                    <label><input name="answer2" type="radio" value="B"> đầu</label>
-                    <label><input name="answer2" type="radio" value="C"> tai</label>
-                    <label><input name="answer2" type="radio" value="D"> tay</label>
+                    The framework of bones inside the human body is called the...<br>
+                    <label><input name="answer2" type="radio" value="A"> Muscle</label>
+                    <label><input name="answer2" type="radio" value="B"> Skeleton</label>
+                    <label><input name="answer2" type="radio" value="C"> Skin</label>
+                    <label><input name="answer2" type="radio" value="D"> Nerve</label>
                 </li>
                 <br>
                 <li>
-                    mouth có nghĩa là gì ?<br>
-                    <label><input name="answer3" type="radio" value="A"> mắt</label>
-                    <label><input name="answer3" type="radio" value="B"> miệng</label>
-                    <label><input name="answer3" type="radio" value="C"> đầu</label>
-                    <label><input name="answer3" type="radio" value="D"> chân</label>
+                    Which part of the body is composed of vertebrae and protects the spinal cord?<br>
+                    <label><input name="answer3" type="radio" value="A"> Spine</label>
+                    <label><input name="answer3" type="radio" value="B"> Skull</label>
+                    <label><input name="answer3" type="radio" value="C"> Jaw</label>
+                    <label><input name="answer3" type="radio" value="D"> Rib</label>
                 </li>
                 <br>
                 <li>
-                    face có nghĩa là gì ?<br>
-                    <label><input name="answer4" type="radio" value="A"> đầu</label>
-                    <label><input name="answer4" type="radio" value="B"> khuôn mặt</label>
-                    <label><input name="answer4" type="radio" value="C"> tai</label>
-                    <label><input name="answer4" type="radio" value="D"> mặt</label>
+                    What are the blood vessels that carry oxygen-rich blood away from the heart?<br>
+                    <label><input name="answer4" type="radio" value="A"> Veins</label>
+                    <label><input name="answer4" type="radio" value="B"> Nerves</label>
+                    <label><input name="answer4" type="radio" value="C"> Tendons</label>
+                    <label><input name="answer4" type="radio" value="D"> Arteries</label>
                 </li>
                 <br>
                 <li>
-                    stomach có nghĩa là gì ?<br>
-                    <label><input name="answer5" type="radio" value="A"> bụng</label>
-                    <label><input name="answer5" type="radio" value="B"> đầu</label>
-                    <label><input name="answer5" type="radio" value="C"> lưng</label>
-                    <label><input name="answer5" type="radio" value="D"> mặt</label>
+                    Which organ extracts oxygen from the air and transfers it into the blood?<br>
+                    <label><input name="answer5" type="radio" value="A"> Brain</label>
+                    <label><input name="answer5" type="radio" value="B"> Lungs</label>
+                    <label><input name="answer5" type="radio" value="C"> Kidney</label>
+                    <label><input name="answer5" type="radio" value="D"> Throat</label>
                 </li>
+                <br>
             </ol>
         </fieldset>
         <fieldset>
-            <legend>FILL</legend>
-            <h2>Fill in the blank </h2>
-            <ol>
-                <li>đầu:<input name="q1" placeholder="keys" type="text"></li>
-                <li>tai:<input name="q2" placeholder="keys" type="text"></li>
-                <li>khuôn mặt:<input name="q3" placeholder="keys" type="text"></li>
-                <li>bụng:<input name="q4" placeholder="keys" type="text"></li>
-                <li>miệng:<input name="q5" placeholder="keys" type="text"></li>
-                <li>bàn tay:<input name="q6" placeholder="keys" type="text"></li>
-                <li>cẳng chân:<input name="q7" placeholder="keys" type="text"></li>
-                <li>bàn chân:<input name="q8" placeholder="keys" type="text"></li>
-                <li>cánh tay:<input name="q9" placeholder="keys" type="text"></li>
-                <li>cái mũi:<input name="q10" placeholder="keys" type="text"></li>
+            <legend>Từ Vựng (Nâng Cao)</legend>
+            <h2>BÀI TẬP ĐIỀN TỪ (NÂNG CAO)</h2>
+            <ol start="6">
+                <li>
+                    The _________ (Cơ bắp) in your legs help you run and jump.<br>
+                    <input type="text" name="q1">
+                </li>
+                <br>
+                <li>
+                    He felt a sharp pain in his _________ (Dạ dày) after eating spoiled food.<br>
+                    <input type="text" name="q2">
+                </li>
+                <br>
+                <li>
+                    The doctor checked her _________ (Xương sọ) after the car accident.<br>
+                    <input type="text" name="q3">
+                </li>
+                <br>
+                <li>
+                    A healthy _________ (Gan) is essential for detoxifying the body.<br>
+                    <input type="text" name="q4">
+                </li>
+                <br>
+                <li>
+                    She wore a bracelet around her _________ (Cổ tay).<br>
+                    <input type="text" name="q5">
+                </li>
+                <br>
+                <li>
+                    The runner twisted his _________ (Mắt cá chân) during the marathon.<br>
+                    <input type="text" name="q6">
+                </li>
+                <br>
+                <li>
+                    Information is transmitted to the brain via the _________ (Dây thần kinh) system.<br>
+                    <input type="text" name="q7">
+                </li>
+                <br>
+                <li>
+                    The dentist examined my lower _________ (Hàm) for cavities.<br>
+                    <input type="text" name="q8">
+                </li>
+                <br>
+                <li>
+                    Food travels through the stomach into the small _________ (Ruột).<br>
+                    <input type="text" name="q9">
+                </li>
+                <br>
+                <li>
+                    Blood returns to the heart through the _________ (Tĩnh mạch).<br>
+                    <input type="text" name="q10">
+                </li>
+                <br>
             </ol>
         </fieldset>
         <div style="text-align: center; margin-top: 20px;">
@@ -93,7 +135,7 @@
             <p id="score-text" style="font-size: 18px; margin: 20px 0;">Bạn đã đạt ... điểm.</p>
             <p id="modal-message"></p>
             <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
-                <button id="btn-upgrade" class="btn-next" style="margin-top: 0; display: none;">Nâng cấp → Khá</button>
+                <button id="btn-upgrade" style="display:none" class="btn-next" style="margin-top: 0; display: none;">Nâng cấp → Khá</button>
                 <button id="btn-review" class="btn-next" style="margin-top: 0; background: #ff9800; display: none;">📚 Ôn lại từ vựng</button>
                 <button onclick="window.location.href='index.html'" class="btn-next" style="margin-top: 0; background: #6c757d;">🏠 Về trang chủ</button>
             </div>
@@ -137,21 +179,21 @@
 
             // Đáp án đúng cho Test 1
             const answers = {
-                answer1: "B", // đầu
-                answer2: "A", // mắt
-                answer3: "B", // miệng
-                answer4: "B", // khuôn mặt
-                answer5: "A", // bụng
-                q1: "head",
-                q2: "ear",
-                q3: "face",
-                q4: "stomach",
-                q5: "mouth",
-                q6: "hand",
-                q7: "leg",
-                q8: "foot",
-                q9: "arm",
-                q10: "nose"
+                answer1: "C",
+                answer2: "B",
+                answer3: "A",
+                answer4: "D",
+                answer5: "B",
+                q1: "muscle",
+                q2: "stomach",
+                q3: "skull",
+                q4: "liver",
+                q5: "wrist",
+                q6: "ankle",
+                q7: "nerve",
+                q8: "jaw",
+                q9: "intestine",
+                q10: "vein",
             };
 
             let score = 0;
@@ -214,14 +256,27 @@
 
             scoreText.innerHTML = `Bạn đã đạt <strong>${score}/${totalQuestions}</strong> điểm.`;
 
+            
             if (score >= PASS_SCORE) {
-                modalTitle.textContent = '🎉 Xuất sắc!';
-                modalMessage.textContent = 'Bạn đã vượt qua! Bạn có muốn nâng cấp lên trình độ: Khá?';
-                btnUpgrade.style.display = 'inline-block';
-                btnReview.style.display = 'none';
+                // Celebration
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+                
+                modalTitle.textContent = '🏆 Tuyệt vời, hoàn thành 100%!';
+                modalMessage.textContent = 'Chúc mừng bạn đã chinh phục cấu trúc Khá của chủ đề này!';
+                btnUpgrade.style.display = 'none';
+                btnReview.textContent = 'Trở về màn hình trạng thái';
+                btnReview.style.display = 'inline-block';
+                btnReview.onclick = function() { window.location.href = 'progress-status.html'; };
+                
+                localStorage.setItem('testkha-completed-body', 'true');
+
             } else {
                 modalTitle.textContent = '😔 Chưa đạt!';
-                modalMessage.textContent = `Bạn cần đạt ít nhất ${PASS_SCORE}/${totalQuestions} điểm để nâng cấp. Hãy ôn lại và thử lại!`;
+                modalMessage.textContent = `Bạn cần đạt ít nhất ${PASS_SCORE}/${totalQuestions} điểm để qua mức Khá.`;
                 btnUpgrade.style.display = 'none';
                 btnReview.style.display = 'inline-block';
             }

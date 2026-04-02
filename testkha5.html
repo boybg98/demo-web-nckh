@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Check Learning</title>
+    <title>Check computer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/fonttest.css">
     <script src="./js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <h1>📝 Bài kiểm tra: Học tập</h1>
+    <h1>📝 Bài kiểm tra: Máy tính</h1>
     <input type="hidden" id="h_val" value="0">
     <input type="hidden" id="m_val" value="3">
     <input type="hidden" id="s_val" value="0">
@@ -19,64 +20,105 @@
     
     <form id="test-form">
         <fieldset>
-            <legend>Experience</legend>
-            <h2>Choose the correct option</h2>
+            <legend>Máy Tính (Nâng Cao)</legend>
+            <h2>BÀI TẬP TRẮC NGHIỆM (NÂNG CAO)</h2>
             <ol>
                 <li>
-                   <p class="questions"> study có nghĩa là ?</p> 
-                    <label><input name="answer1" type="radio" value="A">học</label>
-                    <label><input name="answer1" type="radio" value="B">bình luận chú thích</label>
-                    <label><input name="answer1" type="radio" value="C">đào tạo</label>
-                    <label><input name="answer1" type="radio" value="D">ghi chép</label>
+                    A set of rules or instructions given to a computer to solve a problem is an...<br>
+                    <label><input name="answer1" type="radio" value="A"> Algorithm</label>
+                    <label><input name="answer1" type="radio" value="B"> Equation</label>
+                    <label><input name="answer1" type="radio" value="C"> Hardware</label>
+                    <label><input name="answer1" type="radio" value="D"> Database</label>
                 </li>
                 <br>
                 <li>
-                  <p class="questions">  comment có nghĩa là gì ?</p>
-                    <label><input name="answer2" type="radio" value="A">học</label>
-                    <label><input name="answer2" type="radio" value="B">bình luận chú thích</label>
-                    <label><input name="answer2" type="radio" value="C">đọc</label>
-                    <label><input name="answer2" type="radio" value="D">đào tạo</label>
+                    An organized collection of structured information, typically stored electronically, is a...<br>
+                    <label><input name="answer2" type="radio" value="A"> Spreadsheet</label>
+                    <label><input name="answer2" type="radio" value="B"> Directory</label>
+                    <label><input name="answer2" type="radio" value="C"> Database</label>
+                    <label><input name="answer2" type="radio" value="D"> Website</label>
                 </li>
                 <br>
                 <li>
-                    <p class="questions">train có nghĩa là gì ?</p>
-                    <label><input name="answer3" type="radio" value="A">bình luận chú thích</label>
-                    <label><input name="answer3" type="radio" value="B">đào tạo</label>
-                    <label><input name="answer3" type="radio" value="C">đọc</label>
-                    <label><input name="answer3" type="radio" value="D">ghi nhớ</label>
+                    Software that is specifically designed to disrupt, damage, or gain unauthorized access to a computer is called...<br>
+                    <label><input name="answer3" type="radio" value="A"> Freeware</label>
+                    <label><input name="answer3" type="radio" value="B"> Malware</label>
+                    <label><input name="answer3" type="radio" value="C"> Firmware</label>
+                    <label><input name="answer3" type="radio" value="D"> Shareware</label>
                 </li>
                 <br>
                 <li>
-                    <p class="questions"> copy có nghĩa là gì ?</p> 
-                    <label><input name="answer4" type="radio" value="A">đào tạo</label>
-                    <label><input name="answer4" type="radio" value="B">học</label>
-                    <label><input name="answer4" type="radio" value="C">ghi chép</label>
-                    <label><input name="answer4" type="radio" value="D">đọc</label>
+                    The physical components of a computer system are referred to as...<br>
+                    <label><input name="answer4" type="radio" value="A"> Software</label>
+                    <label><input name="answer4" type="radio" value="B"> Hardware</label>
+                    <label><input name="answer4" type="radio" value="C"> Network</label>
+                    <label><input name="answer4" type="radio" value="D"> Cloud</label>
                 </li>
                 <br>
                 <li>
-                    <p>read có nghĩa là gì?</p> 
-                    <label><input name="answer5" type="radio" value="A">đọc</label>
-                    <label><input name="answer5" type="radio" value="B">bình luận chú thích</label>
-                    <label><input name="answer5" type="radio" value="C">học</label>
-                    <label><input name="answer5" type="radio" value="D">ghi chép</label>
+                    What is the maximum rate of data transfer across a given path?<br>
+                    <label><input name="answer5" type="radio" value="A"> Latency</label>
+                    <label><input name="answer5" type="radio" value="B"> Frequency</label>
+                    <label><input name="answer5" type="radio" value="C"> Bandwidth</label>
+                    <label><input name="answer5" type="radio" value="D"> Resolution</label>
                 </li>
+                <br>
             </ol>
         </fieldset>
         <fieldset>
-            <legend>FILL</legend>
-            <h2>Fill in the blank </h2>
-            <ol>
-                <li>study:<input name="q1" placeholder="keys" type="text"></li>
-                <li>comment:<input name="q2" placeholder="keys" type="text"></li>
-                <li>train:<input name="q3" placeholder="keys" type="text"></li>
-                <li>copy:<input name="q4" placeholder="keys" type="text"></li>
-                <li>read:<input name="q5" placeholder="keys" type="text"></li>
-                <li>write:<input name="q6" placeholder="keys" type="text"></li>
-                <li>listen:<input name="q7" placeholder="keys" type="text"></li>
-                <li>speak:<input name="q8" placeholder="keys" type="text"></li>
-                <li>practice:<input name="q9" placeholder="keys" type="text"></li>
-                <li>homework:<input name="q10" placeholder="keys" type="text"></li>
+            <legend>Từ Vựng (Nâng Cao)</legend>
+            <h2>BÀI TẬP ĐIỀN TỪ (NÂNG CAO)</h2>
+            <ol start="6">
+                <li>
+                    The company stores all its files on a central _________ (Máy chủ).<br>
+                    <input type="text" name="q1">
+                </li>
+                <br>
+                <li>
+                    A strong _________ (Mạng lưới) connection is required for online gaming.<br>
+                    <input type="text" name="q2">
+                </li>
+                <br>
+                <li>
+                    Microsoft Office is a popular suite of _________ (Phần mềm).<br>
+                    <input type="text" name="q3">
+                </li>
+                <br>
+                <li>
+                    Learning Python _________ (Lập trình) is very useful for data analysis.<br>
+                    <input type="text" name="q4">
+                </li>
+                <br>
+                <li>
+                    The central _________ (Bộ vi xử lý) acts as the brain of the computer.<br>
+                    <input type="text" name="q5">
+                </li>
+                <br>
+                <li>
+                    You should enable the _________ (Tường lửa) to protect your computer from hackers.<br>
+                    <input type="text" name="q6">
+                </li>
+                <br>
+                <li>
+                    Please back up your data to the _________ (Đám mây) to avoid losing it.<br>
+                    <input type="text" name="q7">
+                </li>
+                <br>
+                <li>
+                    The website uses advanced _________ (Mã hóa) to protect user passwords.<br>
+                    <input type="text" name="q8">
+                </li>
+                <br>
+                <li>
+                    We need to update the operating _________ (Hệ thống) to the newest version.<br>
+                    <input type="text" name="q9">
+                </li>
+                <br>
+                <li>
+                    The new app's user _________ (Giao diện) is very intuitive and clean.<br>
+                    <input type="text" name="q10">
+                </li>
+                <br>
             </ol>
         </fieldset>
         <div style="text-align: center; margin-top: 20px;">
@@ -93,7 +135,7 @@
             <p id="score-text" style="font-size: 18px; margin: 20px 0;">Bạn đã đạt ... điểm.</p>
             <p id="modal-message"></p>
             <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
-                <button id="btn-upgrade" class="btn-next" style="margin-top: 0; display: none;">Nâng cấp → Khá</button>
+                <button id="btn-upgrade" style="display:none" class="btn-next" style="margin-top: 0; display: none;">Nâng cấp → Khá</button>
                 <button id="btn-review" class="btn-next" style="margin-top: 0; background: #ff9800; display: none;">📚 Ôn lại từ vựng</button>
                 <button onclick="window.location.href='index.html'" class="btn-next" style="margin-top: 0; background: #6c757d;">🏠 Về trang chủ</button>
             </div>
@@ -126,21 +168,21 @@
             }
 
             const answers = {
-                answer1: "A", // học
-                answer2: "B", // bình luận
-                answer3: "B", // đào tạo
-                answer4: "C", // ghi chép
-                answer5: "A", // đọc
-                q1: "học",
-                q2: "bình luận chú thích",
-                q3: "đào tạo",
-                q4: "ghi chép",
-                q5: "đọc",
-                q6: "viết",
-                q7: "nghe",
-                q8: "nói",
-                q9: "thực hành",
-                q10: "bài tập về nhà"
+                answer1: "A",
+                answer2: "C",
+                answer3: "B",
+                answer4: "B",
+                answer5: "C",
+                q1: "server",
+                q2: "network",
+                q3: "software",
+                q4: "programming",
+                q5: "processor",
+                q6: "firewall",
+                q7: "cloud",
+                q8: "encryption",
+                q9: "system",
+                q10: "interface",
             };
 
             let score = 0;
@@ -174,8 +216,7 @@
             for (let i = 1; i <= 10; i++) {
                 const input = document.getElementsByName(`q${i}`)[0];
                 const val = input.value.trim().toLowerCase();
-                // Chấp nhận "bình luận" cho câu 2
-                if (val === answers[`q${i}`].toLowerCase() || (i===2 && val === "bình luận")) {
+                if (val === answers[`q${i}`].toLowerCase()) {
                     score++;
                     input.style.border = "2px solid green";
                     input.style.color = "green";
@@ -195,8 +236,8 @@
 
             // === LƯĐIỆU VÀO BỘ NHỠ ===
             const percentage = (score / totalQuestions) * 100;
-            localStorage.setItem('test-completed-learning', 'true');
-            localStorage.setItem('test-score-learning', percentage);
+            localStorage.setItem('test-completed-computer', 'true');
+            localStorage.setItem('test-score-computer', percentage);
 
             // === HIỂN THỊ KẾT QUẢ THEO ĐIỂM SỐ ===
             const modal = document.getElementById('result-modal');
@@ -207,14 +248,27 @@
 
             document.getElementById('score-text').innerHTML = `Bạn đã đạt <strong>${score}/${totalQuestions}</strong> điểm.`;
 
+            
             if (score >= PASS_SCORE) {
-                modalTitle.textContent = '🎉 Xuất sắc!';
-                modalMessage.textContent = 'Bạn đã vượt qua! Bạn có muốn nâng cấp lên trình độ: Khá?';
-                btnUpgrade.style.display = 'inline-block';
-                btnReview.style.display = 'none';
+                // Celebration
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+                
+                modalTitle.textContent = '🏆 Tuyệt vời, hoàn thành 100%!';
+                modalMessage.textContent = 'Chúc mừng bạn đã chinh phục cấu trúc Khá của chủ đề này!';
+                btnUpgrade.style.display = 'none';
+                btnReview.textContent = 'Trở về màn hình trạng thái';
+                btnReview.style.display = 'inline-block';
+                btnReview.onclick = function() { window.location.href = 'progress-status.html'; };
+                
+                localStorage.setItem('testkha-completed-computer', 'true');
+
             } else {
                 modalTitle.textContent = '😔 Chưa đạt!';
-                modalMessage.textContent = `Bạn cần đạt ít nhất ${PASS_SCORE}/${totalQuestions} điểm để nâng cấp. Hãy ôn lại và thử lại!`;
+                modalMessage.textContent = `Bạn cần đạt ít nhất ${PASS_SCORE}/${totalQuestions} điểm để qua mức Khá.`;
                 btnUpgrade.style.display = 'none';
                 btnReview.style.display = 'inline-block';
             }
@@ -223,11 +277,11 @@
         });
 
         document.getElementById('btn-upgrade').addEventListener('click', function() {
-            window.location.href = 'testkha3.html';
+            window.location.href = 'testkha5.html';
         });
 
         document.getElementById('btn-review').addEventListener('click', function() {
-            window.location.href = 'index.html?topic=learning';
+            window.location.href = 'index.html?topic=computer';
         });
     </script>
 </body>
