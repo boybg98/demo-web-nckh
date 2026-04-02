@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./css/main.css">
 <link rel="stylesheet" href="./css/index.css">
+<link rel="stylesheet" href="./css/ai-panel.css">
 <script src="./js/main.js" defer></script>
 <link rel="stylesheet" href="./test/test1.html">
 <title>Trang chủ </title>
@@ -931,7 +932,100 @@
 
   </footer>
 
+  <!-- ✨ AI FLOATING BUTTON -->
+  <button class="ai-fab" id="ai-fab-btn" onclick="openAIPanel()" title="Mở trợ lý AI">✨ AI</button>
+
+  <!-- ✨ AI SIDE PANEL -->
+  <div id="ai-overlay" class="ai-overlay" onclick="closeAIPanel()"></div>
+
+  <div id="ai-panel" class="ai-panel" role="dialog" aria-modal="true" aria-label="Công cụ AI học tập">
+
+    <!-- Header -->
+    <div class="ai-panel-header">
+      <div class="ai-panel-title">
+        <span class="ai-logo-badge">AI</span>
+        Công cụ học tập thông minh
+      </div>
+      <button class="ai-close-btn" onclick="closeAIPanel()" title="Đóng" aria-label="Đóng panel AI">&times;</button>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="ai-tabs" role="tablist">
+      <button class="ai-tab-btn active" data-tab="explain" role="tab"
+        onclick="switchTab('explain')" id="tab-btn-explain">✨ Giải thích</button>
+      <button class="ai-tab-btn" data-tab="story" role="tab"
+        onclick="switchTab('story')" id="tab-btn-story">📖 Câu chuyện</button>
+      <button class="ai-tab-btn" data-tab="chat" role="tab"
+        onclick="switchTab('chat')" id="tab-btn-chat">🤖 Trợ lý AI</button>
+    </div>
+
+    <!-- TAB 1: Giải thích chuyên sâu -->
+    <div id="tab-explain" class="ai-tab-content active" role="tabpanel">
+      <div class="explain-word-header">
+        <span style="color:#888;font-size:13px;">Đang xem từ:</span>
+        <span class="pill-word" id="explain-word-tag">—</span>
+      </div>
+
+      <div id="explain-result" class="explain-hint">
+        <div style="font-size:36px;margin-bottom:12px;">✨</div>
+        <strong style="color:#aaa;">Giải thích từ vựng chuyên sâu</strong><br>
+        Click nút <strong style="color:#a78bfa;">"✨ Giải thích AI"</strong> trên bất kỳ flashcard nào (sau khi lật)<br>để AI phân tích chi tiết từ đó.
+      </div>
+    </div>
+
+    <!-- TAB 2: Tạo câu chuyện -->
+    <div id="tab-story" class="ai-tab-content" role="tabpanel">
+      <div class="story-controls">
+        <div class="ai-section-label">Chọn chủ đề</div>
+        <select id="story-topic-select" class="story-topic-select">
+          <option value="">-- Chọn chủ đề từ vựng --</option>
+          <option value="body">🏃 Cơ thể người (Body)</option>
+          <option value="professional">👔 Nghề nghiệp (Professional)</option>
+          <option value="learning">📚 Học tập (Learning)</option>
+          <option value="sport">⚽ Thể thao (Sport)</option>
+          <option value="computer">💻 Máy tính (Computer)</option>
+        </select>
+        <button id="story-gen-btn" class="story-gen-btn" onclick="generateStory()">
+          ✨ Tạo câu chuyện mới
+        </button>
+      </div>
+
+      <div id="story-result" style="color:#666;font-size:13px;padding:16px 0;text-align:center;">
+        <div style="font-size:32px;margin-bottom:10px;">📖</div>
+        Chọn chủ đề và nhấn <strong style="color:#a78bfa;">"Tạo câu chuyện"</strong> để AI tạo đoạn văn kết hợp tất cả từ vựng trong chủ đề — giúp bạn nhớ từ lâu hơn!
+      </div>
+    </div>
+
+    <!-- TAB 3: Chatbot trợ lý -->
+    <div id="tab-chat" class="ai-tab-content" role="tabpanel">
+      <div class="chat-wrapper">
+        <div class="chat-actions">
+          <button class="chat-clear-btn" onclick="clearChat()" title="Xóa lịch sử hội thoại">🗑 Xóa hội thoại</button>
+        </div>
+
+        <div id="chat-messages">
+          <div class="chat-bubble ai">
+            <div class="chat-avatar">🤖</div>
+            <div class="chat-text">
+              Xin chào! Tôi là <strong>VocabAI</strong> 👋<br>
+              Bạn muốn hỏi về từ vựng hay ngữ pháp nào?<br>Tôi luôn sẵn sàng giúp đỡ! 😊
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <textarea id="chat-input" rows="2"
+            placeholder="Hỏi về từ vựng, ngữ pháp... (Enter để gửi)"
+            onkeydown="chatInputKeydown(event)"></textarea>
+          <button class="chat-send-btn" onclick="sendChatMessage()" title="Gửi tin nhắn" aria-label="Gửi">➤</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- End #ai-panel -->
+
   <script type="module" src="./firebase/index.js"></script>
+  <script src="./js/ai-features.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
