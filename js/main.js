@@ -508,6 +508,16 @@ function showTopic(topicId) {
 }
 window.showTopic = showTopic;
 
+// === AUTO-OPEN TOPIC FROM URL PARAM (?topic=body) ===
+// Dùng khi bấm nút "Ôn lại" từ trang bài kiểm tra
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const topicParam = params.get('topic');
+  if (topicParam && ['body', 'professional', 'learning', 'sport', 'computer'].includes(topicParam)) {
+    showTopic(topicParam);
+  }
+});
+
 function showHome() {
   document.getElementById('home-view').style.display = 'block';
   document.getElementById('flashcard-view').style.display = 'none';
@@ -517,10 +527,23 @@ window.showHome = showHome;
 
 // --- 3D FLIP FLASHCARD TRANSFORMATION ---
 document.addEventListener('DOMContentLoaded', () => {
+  const wrongWordsStr = localStorage.getItem('wrongWords');
+  let wrongWords = [];
+  if (wrongWordsStr) {
+      try { wrongWords = JSON.parse(wrongWordsStr); } catch (e) {}
+  }
+
   document.querySelectorAll('.flashcard').forEach(card => {
     if (card.querySelector('.flashcard-inner')) return; // Prevent double transform
 
     const wordEl = card.querySelector('.word');
+    if (wordEl) {
+        let pureWord = wordEl.textContent.replace('🔊', '').trim().toLowerCase();
+        if (wrongWords.includes(pureWord)) {
+            card.classList.add('wrong-vocab-highlight');
+        }
+    }
+
     const meaningEl = card.querySelector('.meaning');
     const exampleEl = card.querySelector('.example');
     const btnGroup = card.querySelector('.button-group');

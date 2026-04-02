@@ -308,3 +308,16 @@ section ol li {
     text-transform: uppercase;
     border-top: 1px solid #f1f3f5;
 }
+
+/* --- HIGHLIGHT WRONG WORDS FROM TESTS --- */
+.flashcard.wrong-vocab-highlight .flashcard-front {
+    border: 2px solid #ef4444 !important;
+    background-color: #fef2f2 !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25) !important;
+}
+.flashcard.wrong-vocab-highlight .flashcard-front .word {
+    color: #dc2626 !important;
+}
+.flashcard.wrong-vocab-highlight .flashcard-back {
+    border: 2px solid #ef4444 !important;
+}
