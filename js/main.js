@@ -503,7 +503,10 @@ function showTopic(topicId) {
   });
   
   const target = document.getElementById(topicId);
-  if(target) target.style.display = 'block';
+  if(target) {
+      target.style.display = 'block';
+      initCarouselForSection(topicId); // <---- Init carousel khi mở Flashcard
+  }
   window.scrollTo(0,0);
 }
 window.showTopic = showTopic;
@@ -514,6 +517,84 @@ function showHome() {
   window.scrollTo(0,0);
 }
 window.showHome = showHome;
+
+/* --- THÊM CHỨC NĂNG CAROUSEL CHO FLASHCARD --- */
+const carouselState = {
+    body: 0,
+    professional: 0,
+    learning: 0,
+    sport: 0,
+    computer: 0
+};
+
+function initCarouselForSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    let controls = section.querySelector('.carousel-controls');
+    if (!controls) {
+        controls = document.createElement('div');
+        controls.className = 'carousel-controls';
+        controls.innerHTML = `
+            <button class="carousel-btn btn-prev" onclick="goToCard('${sectionId}', -1)"><i class="fa fa-chevron-left"></i></button>
+            <div class="carousel-status"><span id="c-idx-${sectionId}">1</span> / <span id="c-total-${sectionId}">0</span></div>
+            <button class="carousel-btn btn-next" onclick="goToCard('${sectionId}', 1)"><i class="fa fa-chevron-right"></i></button>
+        `;
+        const ol = section.querySelector('ol');
+        if (ol) {
+            ol.parentNode.insertBefore(controls, ol.nextSibling);
+        }
+    }
+    
+    updateCarouselUI(sectionId);
+}
+
+function goToCard(sectionId, step) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    const items = section.querySelectorAll('ol li');
+    if (items.length === 0) return;
+    
+    carouselState[sectionId] += step;
+    
+    if (carouselState[sectionId] < 0) {
+        carouselState[sectionId] = items.length - 1; // Vòng lại trang cuối
+    } else if (carouselState[sectionId] >= items.length) {
+        carouselState[sectionId] = 0; // Vòng lại trang đầu
+    }
+    
+    updateCarouselUI(sectionId);
+}
+
+function updateCarouselUI(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    const items = section.querySelectorAll('ol li');
+    const total = items.length;
+    if (total === 0) return;
+    
+    let currentIndex = carouselState[sectionId];
+    
+    items.forEach((item, index) => {
+        if (index === currentIndex) {
+            item.classList.add('carousel-active');
+            
+            // Xóa state lật bài lưu lại từ thẻ cũ
+            const flashcard = item.querySelector('.flashcard');
+            if (flashcard) flashcard.classList.remove('flipped');
+        } else {
+            item.classList.remove('carousel-active');
+        }
+    });
+    
+    const currEl = document.getElementById(`c-idx-${sectionId}`);
+    const totEl = document.getElementById(`c-total-${sectionId}`);
+    
+    if (currEl) currEl.innerText = currentIndex + 1;
+    if (totEl) totEl.innerText = total;
+}
 
 // --- 3D FLIP FLASHCARD TRANSFORMATION ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -538,9 +619,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const back = document.createElement('div');
     back.className = 'flashcard-back';
     
+    // Thêm hình ảnh tĩnh đã kiểm duyệt từ Wikipedia để không bị lỗi tải ảnh
+    const wordText = wordEl ? wordEl.textContent.replace('🔊', '').trim() : '';
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'flashcard-img-wrapper';
+    imgWrapper.style.margin = '10px 0';
+    imgWrapper.style.textAlign = 'center';
+    
+    const imgMap = {
+      "head":         "https://static.vecteezy.com/system/resources/previews/034/898/309/non_2x/boy-cartoon-head-isolated-white-background-free-vector.jpg",
+      "eye":          "./img/flashcards/eye.jpg",
+      "mouth":        "./img/flashcards/mouth.jpg",
+      "face":         "./img/flashcards/face.jpg",
+      "stomach":      "./img/flashcards/stomach.webp",
+      "hand":         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Hand%2C_fingers_-_back.jpg/500px-Hand%2C_fingers_-_back.jpg",
+      "leg":          "https://png.pngtree.com/png-vector/20201226/ourmid/pngtree-flesh-colored-straight-leg-left-leg-clip-art-png-image_2647683.jpg",
+      "foot":         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Foot_on_white_background.jpg/500px-Foot_on_white_background.jpg",
+      "arm":          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Extended_arm.jpg/500px-Extended_arm.jpg",
+      "nose":         "./img/flashcards/nose.png",
+      "teacher":      "https://upload.wikimedia.org/wikipedia/commons/f/f2/Classroom_at_a_seconday_school_in_Pendembu_Sierra_Leone_Adapted.jpg",
+      "doctor":       "https://png.pngtree.com/png-vector/20240804/ourlarge/pngtree-doctor-cartoon-illustration-png-image_13367782.png",
+      "police":       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/HH_Polizeihauptmeister_MZ.jpg/500px-HH_Polizeihauptmeister_MZ.jpg",
+      "worker":       "./img/flashcards/worker.jpg",
+      "driver":       "https://png.pngtree.com/png-clipart/20240610/original/pngtree-a-taxi-driver-cartoon-art-png-image_15291361.png",
+      "engineer":     "https://png.pngtree.com/recommend-works/png-clipart/20250507/ourlarge/pngtree-animation-image-engineer-png-image_16212742.png",
+      "nurse":        "./img/flashcards/nurse.jpg",
+      "actor":        "./img/flashcards/actor.jpg",
+      "pilot":        "https://png.pngtree.com/png-clipart/20250429/original/pngtree-a-cartoonish-pilot-in-blue-uniform-pilots-classic-silver-airplane-confidently-png-image_20894968.png",
+      "chef":         "https://png.pngtree.com/png-vector/20241120/ourlarge/pngtree-cheerful-cartoon-chef-holding-fork-and-spoon-in-a-white-uniform-png-image_14499161.png",
+      "study":        "./img/flashcards/study.jpg",
+      "comment":      "./img/flashcards/comment.jpg",
+      "train":        "./img/flashcards/train.jpg",
+      "copy":         "./img/flashcards/copy.jpg",
+      "read":         "./img/flashcards/read.jpg",
+      "write":        "./img/flashcards/write.jpg",
+      "listen":       "./img/flashcards/listen.jpg",
+      "speak":        "./img/flashcards/speak.jpg",
+      "practice":     "./img/flashcards/practice.jpg",
+      "homework":     "./img/flashcards/homework.jpg",
+      "athletics":    "./img/flashcards/athletics.jpg",
+      "championship": "./img/flashcards/championship.jpg",
+      "gold-medal":   "./img/flashcards/gold-medal.jpg",
+      "contest":      "./img/flashcards/contest.jpg",
+      "semi-final":   "./img/flashcards/semi-final.jpg",
+      "football":     "./img/flashcards/football.jpg",
+      "swimmer":      "./img/flashcards/swimmer.jpg",
+      "tennis":       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/2013_Australian_Open_-_Guillaume_Rufin.jpg/500px-2013_Australian_Open_-_Guillaume_Rufin.jpg",
+      "stadium":      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Narendra_Modi_Stadium_view_from_the_gallery.jpg/500px-Narendra_Modi_Stadium_view_from_the_gallery.jpg",
+      "coach":        "./img/flashcards/coach.jpg",
+      "keyboard":     "./img/flashcards/keyboard.jpg",
+      "compiler":     "./img/flashcards/compiler.jpg",
+      "decoder":      "./img/flashcards/decoder.jpg",
+      "flowchart":    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/500px-LampFlowchart.svg.png",
+      "data":         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Data_types_-_en.svg/500px-Data_types_-_en.svg.png",
+      "mouse":        "./img/flashcards/mouse.jpg",
+      "screen":       "./img/flashcards/screen.jpg",
+      "hardware":     "./img/flashcards/hardware.jpg",
+      "software":     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/JavaScript_code.png/500px-JavaScript_code.png",
+      "network":      "./img/flashcards/network.jpg"
+    };
+    
+    if (wordText) {
+        let imgSrc = imgMap[wordText.toLowerCase()] || `https://picsum.photos/seed/${wordText}/400/300`;
+        imgWrapper.innerHTML = `<img src="${imgSrc}" alt="${wordText}" style="max-width:100%; height:180px; object-fit:contain; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">`;
+    }
+
     // We keep original DOM elements for the back face
     // This perfectly preserves all original Javascript bindings!
     if (wordEl) back.appendChild(wordEl);
+    back.appendChild(imgWrapper);
     if (meaningEl) back.appendChild(meaningEl);
     if (exampleEl) back.appendChild(exampleEl);
     if (btnGroup) back.appendChild(btnGroup);

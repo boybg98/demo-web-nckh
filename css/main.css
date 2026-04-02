@@ -57,21 +57,33 @@ section fieldset {
     box-sizing: border-box;          /* Giúp tính toán kích thước chuẩn xác hơn */
     border: none;
 }
-/* --- PHẦN TỪ VỰNG: 5 Ô MỖI HÀNG --- */
+/* --- PHẦN TỪ VỰNG: CAROUSEL VIEW --- */
 section ol {
-    display: flex;              /* Dàn hàng ngang */
-    flex-wrap: wrap;            /* Cho phép rớt dòng để tạo 2 hàng */
-    gap: 20px 15px;             /* Khoảng cách: dọc 20px, ngang 15px */
-    padding: 0 20px;            /* Thụt lề 2 bên */
-    list-style: none;           /* Bỏ số thứ tự */
-    margin: 20px 0;
-    align-items: stretch;       /* Ép các ô cao bằng nhau */
+    position: relative;
+    padding: 0 20px;
+    list-style: none;
+    margin: 20px auto;
+    max-width: 800px; /* Thẻ hiển thị to ở giữa */
+    height: 480px; /* Tăng chiều cao của thẻ lên dài hơn */
 }
 
 section ol li {
-    flex: 0 0 calc((100% - 60px) / 5); /* Chia đều 5 ô mỗi hàng */
-    min-width: 0;
-    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Mặc định ẩn, chỉ hiện thẻ active */
+    animation: fadeCard 0.3s ease-in-out;
+}
+
+section ol li.carousel-active {
+    display: block;
+}
+
+@keyframes fadeCard {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Update flashcard for 3D flip */
@@ -142,7 +154,7 @@ section ol li {
 }
 
 .word {
-    font-size: 20px !important;
+    font-size: 26px !important;
     font-weight: bold;
     color: #007bff;
     display: flex;
@@ -150,10 +162,10 @@ section ol li {
     align-items: center;
 }
 .flashcard-front .word {
-    font-size: 26px !important;
+    font-size: 42px !important; /* Chữ to hơn hẳn cho giao diện 1 thẻ */
     justify-content: center;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 .flashcard-back .word {
     width: 100%;
@@ -168,25 +180,25 @@ section ol li {
 }
 
 .meaning {
-    font-size: 17px;
-    margin: 10px 0;
+    font-size: 22px;
+    margin: 15px 0;
     color: #333;
     font-weight: 500;
 }
 
 .example {
-    font-size: 14px;
+    font-size: 18px;
     font-style: italic;
     color: #666;
-    margin-bottom: 10px;
-    line-height: 1.4;
+    margin-bottom: 15px;
+    line-height: 1.5;
     flex-grow: 1;
     word-break: break-word;
     overflow-wrap: break-word;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 .example em {
@@ -209,8 +221,47 @@ section ol li {
 /* --- NHÓM NÚT BẤM (BUTTONS) --- */
 .button-group {
     display: flex;
-    flex-direction: column;     /* Xếp dọc nút để vừa khung 5 ô */
-    gap: 6px;
+    flex-direction: row;        /* Xếp ngang lại cho nút to khi thẻ rộng */
+    gap: 15px;
+    justify-content: center;
+    margin-top: auto;
+}
+
+/* --- CAROUSEL CONTROLS --- */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 40px;
+    gap: 30px;
+    max-width: 800px;
+}
+
+.carousel-btn {
+    background-color: #fff;
+    color: #3b82f6;
+    border: 1px solid #cbe0f4;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Bóng đổ cho hợp hình nền */
+    transition: all 0.2s;
+}
+
+.carousel-btn:hover {
+    background-color: #e2f0fd;
+    transform: scale(1.05);
+}
+
+.carousel-status {
+    font-size: 20px;
+    font-weight: bold;
+    color: #475569;
 }
 
 .button-group button {

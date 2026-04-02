@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra - Flashcard</title>
+    <link rel="icon" href="./img/logo.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/quiz.css">
+    <script src="./js/quiz.js" defer></script>
+</head>
+<body>
+
+    <!-- Setup Modal -->
+    <div id="setup-modal" class="modal active">
+        <div class="modal-content">
+            <button class="close-btn" onclick="goBack()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-header-text">
+                    <div class="modal-subtitle">1000 Từ Vựng Tiếng Anh Cơ Bản</div>
+                    <h2 class="modal-title">Thiết lập bài kiểm tra</h2>
+                </div>
+                <div class="modal-icon">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <span class="setting-label">Câu hỏi (tối đa <span id="max-questions">50</span>)</span>
+                <input type="number" id="question-count" class="setting-input" value="20" min="1">
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="setting-item">
+                <span class="setting-label">Trắc nghiệm</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggle-mcq" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <span class="setting-label">Tự luận</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggle-essay" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="modal-actions">
+                <button class="start-btn" onclick="startQuiz()">Bắt đầu làm kiểm tra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz UI -->
+    <div id="quiz-ui" class="quiz-container" style="display: none;">
+        <header class="quiz-header">
+            <div class="header-left" onclick="goBack()">
+                <i class="fa fa-arrow-left"></i> Kiểm tra
+            </div>
+            <div class="header-center">
+                <div id="quiz-progress-text">0 / 20</div>
+                <div class="quiz-title">1000 Từ Vựng Tiếng Anh Cơ Bản</div>
+                <div id="timer" class="timer-display">00:00</div>
+            </div>
+            <div class="header-right">
+                <button class="submit-btn" onclick="submitQuiz()">Nộp bài</button>
+            </div>
+        </header>
+
+        <div class="quiz-progress-bar">
+            <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+        </div>
+
+        <main id="questions-container" class="questions-container">
+            <!-- Questions injected via JS -->
+        </main>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content result-content">
+            <h2 class="result-title">🎉 Bảng Điểm</h2>
+            <div class="score-board">
+                <div class="score-circle">
+                    <span id="final-score" class="score-number">0</span>
+                    <span class="total-score">/<span id="total-q">20</span></span>
+                </div>
+            </div>
+            <div class="result-stats">
+                <div class="stat-item">
+                    <i class="fa-solid fa-clock"></i>
+                    Thời gian hoàn thành: 
+                    <strong id="final-time">00:00</strong>
+                </div>
+            </div>
+            <div class="result-actions">
+                <button class="btn-secondary" onclick="window.location.href='index.html'">Về trang chủ</button>
+                <button class="btn-primary" onclick="window.location.reload()">Làm lại bài khác</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
