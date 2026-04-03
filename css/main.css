@@ -149,8 +149,8 @@ section ol li.carousel-active {
     background-color: #f8fbff;
     border: 1px solid #007bff;
     transform: rotateY(180deg);
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
 }
 
 .word {
@@ -158,8 +158,9 @@ section ol li.carousel-active {
     font-weight: bold;
     color: #007bff;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 .flashcard-front .word {
     font-size: 42px !important; /* Chữ to hơn hẳn cho giao diện 1 thẻ */
@@ -172,59 +173,77 @@ section ol li.carousel-active {
 }
 
 .word button {
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 2px 6px;
+    background: #e9ecef;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.word button:hover {
+    background: #dde2e6;
+    transform: scale(1.05);
 }
 
 .meaning {
-    font-size: 22px;
-    margin: 15px 0;
-    color: #333;
-    font-weight: 500;
+    font-size: 24px;
+    margin: 5px 0 10px;
+    color: #df2020;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
 }
 
 .example {
-    font-size: 18px;
+    font-size: 16px;
     font-style: italic;
-    color: #666;
-    margin-bottom: 15px;
+    color: #555;
+    margin-bottom: 20px;
     line-height: 1.5;
-    flex-grow: 1;
     word-break: break-word;
-    overflow-wrap: break-word;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
+    width: 100%;
 }
 
 .example em {
-    flex-shrink: 1;
-    min-width: 0;
+    flex: 0 1 auto;
 }
 
 .example button {
     flex-shrink: 0;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 1px 5px;
+    background: #e9ecef;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 12px;
-    line-height: 1.3;
-    white-space: nowrap;
+    font-size: 14px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.example button:hover {
+    background: #dde2e6;
+    transform: scale(1.05);
 }
 
 /* --- NHÓM NÚT BẤM (BUTTONS) --- */
 .button-group {
     display: flex;
-    flex-direction: row;        /* Xếp ngang lại cho nút to khi thẻ rộng */
-    gap: 15px;
-    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
     margin-top: auto;
+    width: 100%;
 }
 
 /* --- CAROUSEL CONTROLS --- */
@@ -265,14 +284,18 @@ section ol li.carousel-active {
 }
 
 .button-group button {
-    padding: 8px;
+    flex: 1;
+    padding: 10px 5px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
-    width: 100%;
     transition: opacity 0.2s;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-remember {

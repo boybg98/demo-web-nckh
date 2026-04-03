@@ -704,14 +704,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (wordText) {
         let imgSrc = imgMap[wordText.toLowerCase()] || `https://picsum.photos/seed/${wordText}/400/300`;
-        imgWrapper.innerHTML = `<img src="${imgSrc}" alt="${wordText}" style="max-width:100%; height:180px; object-fit:contain; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">`;
+        imgWrapper.innerHTML = `<img src="${imgSrc}" alt="${wordText}" style="max-width:100%; height:140px; object-fit:contain; border-radius:8px;">`;
     }
 
     // We keep original DOM elements for the back face
     // This perfectly preserves all original Javascript bindings!
     if (wordEl) back.appendChild(wordEl);
-    back.appendChild(imgWrapper);
     if (meaningEl) back.appendChild(meaningEl);
+    back.appendChild(imgWrapper);
     if (exampleEl) back.appendChild(exampleEl);
     if (btnGroup) back.appendChild(btnGroup);
 

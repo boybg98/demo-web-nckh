@@ -487,18 +487,13 @@
 /* ---- AI Explain Button on Flashcards ---- */
 .btn-ai-explain {
   background: linear-gradient(135deg, rgba(108,71,255,0.12), rgba(0,212,255,0.08));
-  border: 1px solid rgba(108,71,255,0.3);
+  border: 1px solid rgba(108,71,255,0.3) !important;
   border-radius: 6px;
-  color: #a78bfa;
-  padding: 5px 8px;
-  font-size: 11.5px;
+  color: #a78bfa !important;
   font-weight: 600;
   cursor: pointer;
-  width: 100%;
   transition: all 0.2s ease;
   letter-spacing: 0.1px;
-  margin-bottom: 4px;
-  line-height: 1.3;
 }
 
 .btn-ai-explain:hover {
